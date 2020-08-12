@@ -6,3 +6,7 @@ Created on Wed Aug 12 16:39:14 2020
 """
 
 
+class Spielregeln:
+    
+    def __init__(self):
+        
