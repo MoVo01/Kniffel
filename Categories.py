@@ -6,7 +6,7 @@ Created on Wed Aug 12 16:39:14 2020
 """
 
 
-class Rules:
+class Categories:
     
     def __init__(self, throw):
         self.throw = throw
