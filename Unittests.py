@@ -6,6 +6,10 @@ Created on Thu Aug 20 16:31:01 2020
 """
 
 import unittest
+import copy
+
+
+# tested classes
 import Die_Roll as f_dr
 
 
@@ -20,6 +24,12 @@ class ThrowTest(unittest.TestCase):
                     return False
             return True
         
-        dr = f_dr.Die_roll()
-        self.assertTrue(legal_dices(dr))
-    
+        dr1 = f_dr.Die_roll()
+        self.assertTrue(legal_dices(dr1))
+        dr1.roll()
+        self.assertTrue(legal_dices(dr1))
+        dr1.roll()
+        self.assertTrue(legal_dices(dr1))
+        old_dice
+        
+        

@@ -16,8 +16,8 @@ class Categories:
     
     def xOfKind(self, x):
         found = False
-        for dice in self.die_roll:
-            if self.die_roll.count(dice) >= x:
+        for die in self.die_roll:
+            if self.die_roll.count(die) >= x:
                 found = True
                 break
         if found:
@@ -33,10 +33,10 @@ class Categories:
         
     def twoX2ofKind(self):
         found = False
-        for dice1 in self.die_roll:
-            if self.die_roll.count(dice1) >= 2:
-                for dice2 in self.die_roll:
-                    if dice1 != dice2 and self.die_roll.count(dice2) >= 2:
+        for die1 in self.die_roll:
+            if self.die_roll.count(die1) >= 2:
+                for die2 in self.die_roll:
+                    if die1 != die2 and self.die_roll.count(die2) >= 2:
                         found = True
                         break
                 break
@@ -47,10 +47,10 @@ class Categories:
         
     def fullHouse(self):
         found = False
-        for dice1 in self.die_roll:
-            if self.die_roll.count(dice1) == 3:
-                for dice2 in self.die_roll:
-                    if dice1 != dice2 and self.die_roll.count(dice2) == 2:
+        for die1 in self.die_roll:
+            if self.die_roll.count(die1) == 3:
+                for die2 in self.die_roll:
+                    if die1 != die2 and self.die_roll.count(die2) == 2:
                         found = True
                         break
                 break
