@@ -13,9 +13,9 @@ import copy
 import Die_Roll as f_dr
 
 
-class ThrowTest(unittest.TestCase):
+class DieRollTest(unittest.TestCase):
     
-    def test_throw(self):
+    def test_roll(self):
         
         
         def legal_dices(l):
@@ -24,12 +24,25 @@ class ThrowTest(unittest.TestCase):
                     return False
             return True
         
+        # sinnvolle Würfel
         dr1 = f_dr.Die_roll()
-        self.assertTrue(legal_dices(dr1))
+        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
         dr1.roll()
-        self.assertTrue(legal_dices(dr1))
+        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
         dr1.roll()
-        self.assertTrue(legal_dices(dr1))
-        old_dice
+        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
+        
+        # ergebnis ändert sich nach drittem wurf nicht mehr
+        old_dice = copy.deepcopy(dr1.free_dice)
+        dr1.roll()
+        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
+        self.assertEqual(dr1.free_dice, old_dice, msg = "mehr als drei Wuerfelaktionen getaetigt")
+        dr1.roll()
+        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
+        self.assertEqual(dr1.free_dice, old_dice, msg = "mehr als drei Wuerfelaktionen getaetigt")
+        
+        
+        
+        
         
         

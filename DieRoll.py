@@ -8,7 +8,7 @@ import random
 
 
 
-class Die_roll:
+class DieRoll:
     
     def __init__(self):
         self.picked_dice = []
