@@ -82,19 +82,19 @@ class DieRollTest(unittest.TestCase):
         # würfel auswählen
         dr3 = f_dr.DieRoll([1,2,3,4,5])
         dr3.pick(1)
-        self.assertEqual(dr3.free_dice, [1, 3, 4, 5])
-        self.assertEqual(dr3.picked_dice, [2])
+        self.assertEqual(dr3.free_dice, [1, 3, 4, 5], msg = "falscher Wuerfel geloescht")
+        self.assertEqual(dr3.picked_dice, [2], msg = "falscher Wuerfel ausgewaehlt")
         dr3.pick(0)
-        self.assertEqual(dr3.free_dice, [3, 4, 5])
-        self.assertEqual(dr3.picked_dice, [2, 1])
+        self.assertEqual(dr3.free_dice, [3, 4, 5], msg = "falscher Wuerfel geloescht")
+        self.assertEqual(dr3.picked_dice, [2, 1], msg = "falscher Wuerfel ausgewaehlt")
         
         # würfel zurücklegen
         dr3.remove(1)
-        self.assertEqual(dr3.free_dice, [3, 4, 5, 1])
-        self.assertEqual(dr3.picked_dice, [2])
+        self.assertEqual(dr3.free_dice, [3, 4, 5, 1], msg = "Wuerfel nicht richtig hinzugefuegt")
+        self.assertEqual(dr3.picked_dice, [2], msg = "falscher Wuerfel ausgewaehlt")
         dr3.remove(0)
-        self.assertEqual(dr3.free_dice, [3, 4, 5, 1, 2])
-        self.assertEqual(dr3.picked_dice, [])
+        self.assertEqual(dr3.free_dice, [3, 4, 5, 1, 2], msg = "Wuerfel nicht richtig hinzugefuegt")
+        self.assertEqual(dr3.picked_dice, [], msg = "falscher Wuerfel ausgewaehlt")
         
                 
         
