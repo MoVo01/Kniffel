@@ -8,16 +8,16 @@ import random
 
 
 
-class Throw:
+class Die_roll:
     
     def __init__(self):
         self.picked_dices = []
         self.free_dices = [0 for i in range(5)]
-        self.throw()
+        self.Die_roll()
         self.count = 1
         
         
-    def throw(self):
+    def roll(self):
         if self.count <= 3:
             for i in range(len(self.free_dices)):
                 self.free_dices[i] = random.randint(1,6)
