@@ -13,16 +13,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QWidget" name="Playeroverview" native="true">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>671</width>
-     <height>211</height>
+     <width>751</width>
+     <height>221</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="CreateNewPlayer">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -41,7 +41,7 @@
      <string>Create New Player</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="Reset">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -57,10 +57,10 @@
    <widget class="QListWidget" name="Playerlist">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>15</x>
       <y>10</y>
-      <width>256</width>
-      <height>192</height>
+      <width>261</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>
@@ -81,6 +81,69 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Luis&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="Game" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>240</y>
+     <width>751</width>
+     <height>511</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="Dice" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>461</width>
+      <height>491</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="FreeDice" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>149</y>
+       <width>441</width>
+       <height>331</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QWidget" name="PickedDice" native="true">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>10</y>
+       <width>441</width>
+       <height>131</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="PointOverview" native="true">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>10</y>
+      <width>261</width>
+      <height>491</height>
+     </rect>
+    </property>
+    <widget class="QLabel" name="PlayerName">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>55</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
