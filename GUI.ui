@@ -64,7 +64,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="PlaceToCommitPlayerNameProably">
     <property name="geometry">
      <rect>
       <x>460</x>
