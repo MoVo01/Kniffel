@@ -7,11 +7,12 @@ Created on Thu Aug 20 16:31:01 2020
 
 import unittest
 import copy
+import ramdon
 
 
 # tested classes
 import DieRoll as f_dr
-
+import Categories as f_ca
 
 class DieRollTest(unittest.TestCase):
     
@@ -97,5 +98,10 @@ class DieRollTest(unittest.TestCase):
         self.assertEqual(dr3.picked_dice, [], msg = "falscher Wuerfel ausgewaehlt")
         
                 
+class CategoriesTest(unittest.TestCase):
+    
+    def test_simple(self):
         
+        
+    
         
