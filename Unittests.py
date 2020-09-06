@@ -100,8 +100,101 @@ class DieRollTest(unittest.TestCase):
                 
 class CategoriesTest(unittest.TestCase):
     
+    
+    def __init__(self):
+        super(self.__class__, self).__init__()
+        self.ca1 = f_ca.Categories([5,4,3,2,1])
+        self.ca2 = f_ca.Categories([1,2,1,1,2])
+        self.ca3 = f_ca.Categories([2,3,1,5,6])
+        self.ca4 = f_ca.Categories([3,4,3,5,4])
+        self.ca5 = f_ca.Categories([6,6,6,6,6])
+        self.ca6 = f_ca.Categories([1,2,3,4,6])
+    
+    
     def test_simple(self):
-        
+    
+        self.assertEqual(self.ca1.simple(6), 0)
+        self.assertEqual(self.ca1.simple(5), 5)
+        self.assertEqual(self.ca2.simple(1), 3)
+        self.assertEqual(self.ca2.simple(2), 4)
+        self.assertEqual(self.ca5.simple(6), 30)
         
     
+    def test_threeOfKind(self):
         
+        self.assertEqual(self.ca1.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca2.threeOfKind(), 7, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca3.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca4.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca5.threeOfKind(), 30, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca6.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")    
+        
+        
+    def test_fourOfKind(self):
+        
+        self.assertEqual(self.ca1.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca2.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca3.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca4.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca5.threeOfKind(), 30, msg = "falsche Auswertung in FourfKind")
+        self.assertEqual(self.ca6.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")    
+    
+        
+    def test_kniffel(self):
+        
+        self.assertEqual(self.ca1.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca2.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca3.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca4.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca5.kniffel(), 50, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca6.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        
+        
+    def test_twoXtwoOfKind(self):
+        
+        self.assertEqual(self.ca1.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca2.twoXtwoOfKind(), 7, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca3.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca4.twoXtwoOfKind(), 19, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca5.twoXtwoOfKind(), 30, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca6.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
+        
+        
+    def test_fullHouse(self):
+        
+        self.assertEqual(self.ca1.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca2.fullHouse(), 25, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca3.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca4.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca5.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca6.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        
+        
+    def test_largeStraight(self):
+        
+        self.assertEqual(self.ca1.largeStraight(), 40, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca2.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca3.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca4.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca5.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca6.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        
+        
+    def test_smallStraight(self):
+        
+        self.assertEqual(self.ca1.smallStraight(), 30, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca2.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca3.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca4.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca5.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca6.smallStraight(), 30, msg = "falsche Auswertung in SmallStraight")
+        
+        
+    def test_chance(self):
+        
+        self.assertEqual(self.ca1.chance(), 15, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca2.chance(), 7, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca3.chance(),17, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca4.chance(),19, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca5.chance(), 30, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca6.chance(), 16, msg = "falsche Auswertung in Chance")
