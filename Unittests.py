@@ -7,7 +7,6 @@ Created on Thu Aug 20 16:31:01 2020
 
 import unittest
 import copy
-import ramdon
 
 
 # tested classes
@@ -19,7 +18,7 @@ class DieRollTest(unittest.TestCase):
     def test_roll(self):
         
         
-        def legal_dices(l):
+        def legal_dice(l):
             for die in l:
                 if not 1 <= die <= 6:
                     return False
@@ -27,24 +26,24 @@ class DieRollTest(unittest.TestCase):
         
         # sinnvolle würfel
         dr1 = f_dr.DieRoll()
-        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
+        self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         dr1.roll()
-        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
+        self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         dr1.roll()
-        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
+        self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         
         # ergebnis ändert sich nach drittem wurf nicht mehr
         old_dice = copy.deepcopy(dr1.free_dice)
         dr1.roll()
-        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
+        self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         self.assertEqual(dr1.free_dice, old_dice, msg = "mehr als drei Wuerfelaktionen getaetigt")
         dr1.roll()
-        self.assertTrue(legal_dices(dr1), msg = "unmoegliche Augenzahl")
+        self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         self.assertEqual(dr1.free_dice, old_dice, msg = "mehr als drei Wuerfelaktionen getaetigt")
         
     def test_pick(self):
         
-        def legal_dices(l):
+        def legal_dice(l):
             for die in l:
                 if not 1 <= die <= 6:
                     return False
@@ -63,18 +62,18 @@ class DieRollTest(unittest.TestCase):
         # nur ein teil der würfel werfen
         old_dice = copy.deepcopy(dr2.free_dice)
         dr2.roll()
-        self.assertTrue(legal_dices(dr2), msg = "unmoegliche Augenzahl")
+        self.assertTrue(legal_dice(dr2), msg = "unmoegliche Augenzahl")
         self.assertEqual(len(dr2.free_dice), len(old_dice), msg = "falsche Anzal Wuerfel erneut geworfen")
         dr2.roll()
-        self.assertTrue(legal_dices(dr2), msg = "unmoegliche Augenzahl")
+        self.assertTrue(legal_dice(dr2), msg = "unmoegliche Augenzahl")
         self.assertEqual(len(dr2.free_dice), len(old_dice), msg = "falsche Anzal Wuerfel erneut geworfen")
         old_dice2 = copy.deepcopy(dr2.free_dice)
         dr2.roll()
-        self.assertTrue(legal_dices(dr2), msg = "unmoegliche Augenzahl")
+        self.assertTrue(legal_dice(dr2), msg = "unmoegliche Augenzahl")
         self.assertEqual(dr2.free_dice, old_dice2, msg = "mehr als drei Wuerfelaktionen getaetigt")
         self.assertEqual(len(dr2.free_dice), len(old_dice), msg = "falsche Anzal Wuerfel erneut geworfen")
         dr2.roll()
-        self.assertTrue(legal_dices(dr2), msg = "unmoegliche Augenzahl")
+        self.assertTrue(legal_dice(dr2), msg = "unmoegliche Augenzahl")
         self.assertEqual(dr2.free_dice, old_dice2, msg = "mehr als drei Wuerfelaktionen getaetigt")
         self.assertEqual(len(dr2.free_dice), len(old_dice), msg = "falsche Anzal Wuerfel erneut geworfen")
         
