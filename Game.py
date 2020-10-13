@@ -19,15 +19,15 @@ class Game:
         for k in range(1, count_players + 1):
             new_one = Player(input("Name: "))
             self.players.append(new_one)
-        return self.players, self.count_players  ### das self.count_players, was hier zurückgegeben wird existiert so nicht
+        #return self.players, self.count_players
             
     def round_x(self):
-        for k in range(0, self.count_players):  ### heir kann man es dann auch nicht verwenden
+        for k in range(0, len(self.players)):
             print("It's your turn, ",self.players[k].name,"!")
             diceroll = DiceRoll()
             
             roll_again = True
-            while diceroll.rolls_left() and roll_again:  ### wie soll ein DiceRoll <= 3 sein?
+            while diceroll.rolls_left() and roll_again:
                 diceroll.roll()
                 for i in range(1,5):
                     yes_no = input("If you want to keep rolling die ",i," say yes, else no" )
