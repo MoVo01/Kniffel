@@ -10,10 +10,10 @@ import copy
 
 
 # tested classes
-import DieRoll as f_dr
+import DiceRoll as f_dr
 import Categories as f_ca
 
-class DieRollTest(unittest.TestCase):
+class DiceRollTest(unittest.TestCase):
     
     def test_roll(self):
         
@@ -25,7 +25,7 @@ class DieRollTest(unittest.TestCase):
             return True
         
         # sinnvolle würfel
-        dr1 = f_dr.DieRoll()
+        dr1 = f_dr.DiceRoll()
         self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         dr1.roll()
         self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
@@ -50,7 +50,7 @@ class DieRollTest(unittest.TestCase):
             return True
         
         # würfel auswählen
-        dr2 = f_dr.DieRoll()
+        dr2 = f_dr.DiceRoll()
         old_dice = copy.deepcopy(dr2.free_dice)
         dr2.pick(3)
         del old_dice[3]
@@ -80,7 +80,7 @@ class DieRollTest(unittest.TestCase):
     def test_remove(self):
         
         # würfel auswählen
-        dr3 = f_dr.DieRoll([1,2,3,4,5])
+        dr3 = f_dr.DiceRoll([1,2,3,4,5])
         dr3.pick(1)
         self.assertEqual(dr3.free_dice, [1, 3, 4, 5], msg = "falscher Wuerfel geloescht")
         self.assertEqual(dr3.picked_dice, [2], msg = "falscher Wuerfel ausgewaehlt")

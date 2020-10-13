@@ -34,4 +34,7 @@ class DiceRoll:
     
     def all_dice(self):
         return self.free_dice + self.picked_dice
+    
+    def rolls_left(self):
+        return self.count < 3
         
