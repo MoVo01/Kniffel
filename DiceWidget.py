@@ -7,7 +7,7 @@ Created on Thu Sep 17 21:55:27 2020
 
 
 import os
-from DiceRoll import DiceRoll
+from DiceRoll import DiceRoll, RollError
 from PyQt5 import QtCore
 from PyQt5.Qt import Qt
 from PyQt5.QtGui import QPainter, QPixmap, QCursor, QBrush
@@ -20,7 +20,7 @@ class DiceWidget(QWidget):
         # generate mouse move events (see below)
         #self.setMouseTracking(True)
         
-        self.dice_width = 20
+        self.dice_width = self.width() / 9
         
         Eins = QPixmap(os.path.join("Würfel", "Eins"))
         Zwei = QPixmap(os.path.join("Würfel", "Zwei"))
@@ -50,46 +50,51 @@ class DiceWidget(QWidget):
         
         newRoll = DiceRoll()
         
-        #newRoll.pick(1)
-        #newRoll.pick(3)
+        newRoll.pick(1)
         
         for i in range (0,len(newRoll.free_dice)):
             if newRoll.free_dice[i] == 1:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)),2 * self.height() / 3, self.eins)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.eins)
             elif newRoll.free_dice[i] == 2:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)),2 * self.height() / 3, self.zwei)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.zwei)
             elif newRoll.free_dice[i] == 3:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)),2 * self.height() / 3, self.drei)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.drei)
             elif newRoll.free_dice[i] == 4:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)),2 * self.height() / 3, self.vier)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.vier)
             elif newRoll.free_dice[i] == 5:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)),2 * self.height() / 3, self.fuenf)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.fuenf)
             elif newRoll.free_dice[i] == 6:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)),2 * self.height() / 3, self.sechs)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.sechs)
             else:
                 print("Somethings wrong")
           
         for i in range (0,len(newRoll.picked_dice)):
             if newRoll.picked_dice[i] == 1:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)),self.height() / 3, self.eins)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.eins)
             elif newRoll.picked_dice[i] == 2:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)),self.height() / 3, self.zwei)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.zwei)
             elif newRoll.picked_dice[i] == 3:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)),self.height() / 3, self.drei)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.drei)
             elif newRoll.picked_dice[i] == 4:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)),self.height() / 3, self.vier)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.vier)
             elif newRoll.picked_dice[i] == 5:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)),self.height() / 3, self.fuenf)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.fuenf)
             elif newRoll.picked_dice[i] == 6:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)),self.height() / 3, self.sechs)
+                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.sechs)
             else:
                 print("Somethings wrong")
                 
+        
+    def roll(self):
+        try:
+            DiceRoll.roll()
+            self.update()
+        except RollError:
+            text = "You dont have any rolls left"
             
         
 if __name__ == "__main__":
     import sys
-    # In Spyder kann nur eine Qt-Applikation laufen und sie werden nicht anschliessend geloescht
     if QtCore.QCoreApplication.instance() is not None:
         app = QtCore.QCoreApplication.instance()
     else:
