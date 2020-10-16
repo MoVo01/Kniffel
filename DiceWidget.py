@@ -38,6 +38,7 @@ class DiceWidget(QWidget):
         self.vier = Vier.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.fuenf = Fuenf.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.sechs = Sechs.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
+        self.newRoll = DiceRoll()
         
     def paintEvent(self, event):
         super().paintEvent(event)
@@ -50,44 +51,44 @@ class DiceWidget(QWidget):
         painter.drawRect(event.rect())
         
         
-        newRoll = DiceRoll()
         
-        for i in range (0,len(newRoll.free_dice)):
-            if newRoll.free_dice[i] == 1:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.eins)
-            elif newRoll.free_dice[i] == 2:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.zwei)
-            elif newRoll.free_dice[i] == 3:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.drei)
-            elif newRoll.free_dice[i] == 4:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.vier)
-            elif newRoll.free_dice[i] == 5:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.fuenf)
-            elif newRoll.free_dice[i] == 6:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.sechs)
+        
+        for i in range (0,len(self.newRoll.free_dice)):
+            if self.newRoll.free_dice[i] == 1:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.eins)
+            elif self.newRoll.free_dice[i] == 2:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.zwei)
+            elif self.newRoll.free_dice[i] == 3:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.drei)
+            elif self.newRoll.free_dice[i] == 4:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.vier)
+            elif self.newRoll.free_dice[i] == 5:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.fuenf)
+            elif self.newRoll.free_dice[i] == 6:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.sechs)
             else:
                 print("Somethings wrong")
           
-        for i in range (0,len(newRoll.picked_dice)):
-            if newRoll.picked_dice[i] == 1:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.eins)
-            elif newRoll.picked_dice[i] == 2:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.zwei)
-            elif newRoll.picked_dice[i] == 3:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.drei)
-            elif newRoll.picked_dice[i] == 4:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.vier)
-            elif newRoll.picked_dice[i] == 5:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.fuenf)
-            elif newRoll.picked_dice[i] == 6:
-                painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.sechs)
+        for i in range (0,len(self.newRoll.picked_dice)):
+            if self.newRoll.picked_dice[i] == 1:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.eins)
+            elif self.newRoll.picked_dice[i] == 2:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.zwei)
+            elif self.newRoll.picked_dice[i] == 3:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.drei)
+            elif self.newRoll.picked_dice[i] == 4:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.vier)
+            elif self.newRoll.picked_dice[i] == 5:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.fuenf)
+            elif self.newRoll.picked_dice[i] == 6:
+                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.sechs)
             else:
                 print("Somethings wrong")
                 
         
     def roll(self):
         try:
-            DiceRoll.roll()
+            self.newRoll.roll()
             self.update()
         except RollError:
             text = "You dont have any rolls left"
@@ -95,14 +96,23 @@ class DiceWidget(QWidget):
             
     
     def mousePressEvent(self, event):
-        if event.Button() == Qt.LeftButton:
-            if ...:
-                ...
-            elif ...:
-                ...
+        if event.button() == Qt.LeftButton:
+            if event.y() >  2 * self.height() / 3 - (self.dice_width/2) and event.y() <  2 * self.height() / 3 + (self.dice_width/2):
+                self.newRoll.pick(self.posToIndex(event.pos()))
+            elif event.y() > self.height() / 3 - (self.dice_width/2) and event.y() < self.height() / 3 + (self.dice_width/2):
+                self.newRoll.remove(self.posToIndex(event.pos()))
             else:
                 pass
             self.update()
+            
+    def posToIndex(self, pos):
+        if pos.y() > self.height()/2:
+            x = self.width() // pos.x()
+            return x
+        else:
+            x = self.width() // pos.x()
+            return x
+
             
         
 if __name__ == "__main__":
