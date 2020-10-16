@@ -50,8 +50,6 @@ class DiceWidget(QWidget):
         
         newRoll = DiceRoll()
         
-        newRoll.pick(1)
-        
         for i in range (0,len(newRoll.free_dice)):
             if newRoll.free_dice[i] == 1:
                 painter.drawPixmap(self.width() * ((i+1) / (len(newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.eins)
