@@ -102,6 +102,7 @@ class DiceWidget(QWidget):
                 ...
             else:
                 pass
+            self.update()
             
         
 if __name__ == "__main__":
