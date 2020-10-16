@@ -15,6 +15,8 @@ from PyQt5.QtWidgets import QWidget, QMessageBox, QApplication
 
 class DiceWidget(QWidget):
     
+    statusUpdated = QtCore.pyqtSignal(str)
+    
     def __init__(self, parent=None):
         super().__init__(parent)   
         # generate mouse move events (see below)
@@ -89,6 +91,17 @@ class DiceWidget(QWidget):
             self.update()
         except RollError:
             text = "You dont have any rolls left"
+            self.statusUpdated.emit(text)
+            
+    
+    def mousePressEvent(self, event):
+        if event.Button() == Qt.LeftButton:
+            if ...:
+                ...
+            elif ...:
+                ...
+            else:
+                pass
             
         
 if __name__ == "__main__":
