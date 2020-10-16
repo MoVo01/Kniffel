@@ -6,7 +6,8 @@ Created on Wed Aug 12 17:22:48 2020
 """
 import random
 
-
+class RollError(Exception):
+    pass
 
 class DiceRoll:
     
@@ -19,10 +20,12 @@ class DiceRoll:
             self.roll()
               
     def roll(self):
-        if self.count < 3:
+        if self.count <= 3:
             for i in range(len(self.free_dice)):
                 self.free_dice[i] = random.randint(1,6)
             self.count += 1
+        else:
+            raise RollError
             
     def pick(self, pos):
         self.picked_dice.append(self.free_dice[pos])
