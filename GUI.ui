@@ -1206,8 +1206,8 @@
      <y>34</y>
     </hint>
     <hint type="destinationlabel">
-     <x>342</x>
-     <y>228</y>
+     <x>6</x>
+     <y>40</y>
     </hint>
    </hints>
   </connection>
@@ -1222,8 +1222,8 @@
      <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>331</x>
-     <y>233</y>
+     <x>8</x>
+     <y>70</y>
     </hint>
    </hints>
   </connection>
@@ -1238,8 +1238,8 @@
      <y>166</y>
     </hint>
     <hint type="destinationlabel">
-     <x>209</x>
-     <y>231</y>
+     <x>10</x>
+     <y>161</y>
     </hint>
    </hints>
   </connection>
@@ -1254,8 +1254,8 @@
      <y>195</y>
     </hint>
     <hint type="destinationlabel">
-     <x>298</x>
-     <y>238</y>
+     <x>9</x>
+     <y>198</y>
     </hint>
    </hints>
   </connection>
@@ -1270,8 +1270,8 @@
      <y>205</y>
     </hint>
     <hint type="destinationlabel">
-     <x>541</x>
-     <y>231</y>
+     <x>840</x>
+     <y>190</y>
     </hint>
    </hints>
   </connection>
