@@ -8,7 +8,7 @@ Created on Thu Sep 17 21:56:15 2020
 
 import sys
 from PyQt5 import QtCore, QtWidgets, uic
-from DiceWidget import DiceWidget
+import Game, Player
 
 
 
@@ -19,6 +19,20 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         WindowBaseClass.__init__(self, parent)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
+        
+        self.game = Game.Game()
+        
+    def cerate_new_player(self):
+        if self.NameIn.text != "":
+            self.game.check_in(self.NameIn.text)
+            
+    def remove_player(self):
+        self.game.check_out(self.Playerlist.CurrentItem())
+            
+    def update_labels(self):
+        player = self.game.player_from_name()
+        
+        
     
 if __name__ == "__main__":
     if QtCore.QCoreApplication.instance() is not None:
