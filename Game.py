@@ -22,7 +22,7 @@ class Game:
         if not self.game_running and not name in filter(lambda x: x.name == name, self.players):
             self.players.append(Player(name))
             
-    def check_out(self, name): ## name muss in liste sein
+    def check_out(self, name):
         if name in [p.name for p in self.players]:
             del self.players[self.nameindex(name)]
         
@@ -31,12 +31,9 @@ class Game:
             if self.players[i].name == name:
                 return i
         return -1
-    
-    def current_player(self):
-        return self.players[self.current_player_ind]
         
     def next_round(self):
-        if len(self.played_this_round) == len(self.players):
+        if len(self.played_this_round) == len(self.players) and round < 15:
             self.round += 1
             self.played_this_round = []
             return 1
@@ -46,15 +43,16 @@ class Game:
     def play_round(self, name):
         self.game_running = True
         index = self.nameindex(name)
-        if self.player[index] not in self.played_this_round and not self.currently_playing:
+        if self.players[index] not in self.played_this_round and not self.currently_playing:
             self.current_player_ind = index
+            self.currently_playing = True
             self.diceroll = DiceRoll()
             return 1
         else:
             return 0
     
     def roll(self):
-        if self.diceroll.rolls_left():
+        if self.diceroll.rolls_left() and self.currently_playing:
             self.diceroll.roll()
             return 1
         else:
@@ -63,13 +61,16 @@ class Game:
         
     def chooseCat(self, key):  ## key aus Player.keys
         player = self.players[self.current_player_ind]
-        cat = Categories(self.diceroll.all_dice())
-        pointdict = cat.
         if key in player.unused_cat():
-            
+            cat = Categories(self.diceroll.all_dice())
+            pointdict = cat.keydict(player.unused_cat())
+            player.chosen_cat[key] = True
+            player.points[key] = pointdict[key]
+            player.check_35p()
+            self.currently_playing = False
+            self.played_this_round.append(player)
         
-        self.currently_playing = False
-        
+    
     def players_left(self):
         left = []
         for player in self.players:
