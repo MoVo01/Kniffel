@@ -18,65 +18,91 @@
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>421</width>
+     <width>801</width>
      <height>211</height>
     </rect>
    </property>
-   <widget class="QListWidget" name="Playerlist">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>15</x>
       <y>10</y>
-      <width>261</width>
-      <height>201</height>
+      <width>251</width>
+      <height>194</height>
      </rect>
     </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_20">
+     <item>
+      <widget class="QListWidget" name="Playerlist"/>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="CreateNewPlayer">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Create New Player</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="RemovePlayer">
+         <property name="text">
+          <string>Remove Player</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="NameIn"/>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="StartGame">
+         <property name="text">
+          <string>Start Game</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Turn</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>670</x>
       <y>10</y>
-      <width>131</width>
-      <height>201</height>
+      <width>121</width>
+      <height>191</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QPushButton" name="CreateNewPlayer">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Create New Player</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="RemovePlayer">
-       <property name="text">
-        <string>Remove Player</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="NameIn"/>
-     </item>
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
+      <widget class="QTableView" name="PointOverview"/>
      </item>
      <item>
       <widget class="QPushButton" name="Reset">
@@ -920,8 +946,8 @@
    <slot>create_new_player()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>366</x>
-     <y>29</y>
+     <x>234</x>
+     <y>30</y>
     </hint>
     <hint type="destinationlabel">
      <x>615</x>
@@ -936,8 +962,8 @@
    <slot>remove_player()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>408</x>
-     <y>69</y>
+     <x>276</x>
+     <y>70</y>
     </hint>
     <hint type="destinationlabel">
      <x>616</x>
@@ -968,8 +994,8 @@
    <slot>reset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>363</x>
-     <y>207</y>
+     <x>753</x>
+     <y>197</y>
     </hint>
     <hint type="destinationlabel">
      <x>616</x>
@@ -1217,6 +1243,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>StartGame</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>start_game()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>257</x>
+     <y>199</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>164</x>
+     <y>234</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>create_new_player()</slot>
@@ -1224,5 +1266,6 @@
   <slot>update_labels()</slot>
   <slot>reset()</slot>
   <slot>cat_button_clicked()</slot>
+  <slot>start_game()</slot>
  </slots>
 </ui>
