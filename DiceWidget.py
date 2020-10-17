@@ -17,12 +17,6 @@ from Categories import Categories
 class DiceWidget(QWidget):
     
     statusUpdated = QtCore.pyqtSignal(str)
-    AcesSignal = QtCore.pyqtSignal(int)
-    TwosSignal = QtCore.pyqtSignal(int)
-    ThreesSignal = QtCore.pyqtSignal(int)
-    FoursSignal = QtCore.pyqtSignal(int)
-    FivesSignal = QtCore.pyqtSignal(int)
-    SixesSignal = QtCore.pyqtSignal(int)
     
     def __init__(self, parent=None):
         super().__init__(parent)   
@@ -100,8 +94,7 @@ class DiceWidget(QWidget):
         try:
             self.newRoll.roll()
             self.update()
-            self.categories = Categories(self.newRoll.all_dice())
-            self.AcesSignal.emit(str(self.categories.simple(1)))
+            
         except RollError:
             text = "You dont have any rolls left"
             self.statusUpdated.emit(text)
