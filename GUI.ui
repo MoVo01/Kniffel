@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>827</width>
+    <width>936</width>
     <height>911</height>
    </rect>
   </property>
@@ -966,8 +966,8 @@
      <y>253</y>
     </hint>
     <hint type="destinationlabel">
-     <x>687</x>
-     <y>194</y>
+     <x>823</x>
+     <y>259</y>
     </hint>
    </hints>
   </connection>
@@ -982,8 +982,8 @@
      <y>298</y>
     </hint>
     <hint type="destinationlabel">
-     <x>697</x>
-     <y>206</y>
+     <x>824</x>
+     <y>298</y>
     </hint>
    </hints>
   </connection>
@@ -998,8 +998,8 @@
      <y>342</y>
     </hint>
     <hint type="destinationlabel">
-     <x>703</x>
-     <y>156</y>
+     <x>828</x>
+     <y>334</y>
     </hint>
    </hints>
   </connection>
@@ -1014,8 +1014,8 @@
      <y>379</y>
     </hint>
     <hint type="destinationlabel">
-     <x>725</x>
-     <y>212</y>
+     <x>822</x>
+     <y>370</y>
     </hint>
    </hints>
   </connection>
@@ -1030,8 +1030,8 @@
      <y>417</y>
     </hint>
     <hint type="destinationlabel">
-     <x>662</x>
-     <y>159</y>
+     <x>822</x>
+     <y>409</y>
     </hint>
    </hints>
   </connection>
@@ -1046,8 +1046,8 @@
      <y>457</y>
     </hint>
     <hint type="destinationlabel">
-     <x>759</x>
-     <y>104</y>
+     <x>823</x>
+     <y>451</y>
     </hint>
    </hints>
   </connection>
@@ -1270,8 +1270,8 @@
      <y>205</y>
     </hint>
     <hint type="destinationlabel">
-     <x>577</x>
-     <y>227</y>
+     <x>541</x>
+     <y>231</y>
     </hint>
    </hints>
   </connection>
