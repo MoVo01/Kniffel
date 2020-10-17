@@ -37,7 +37,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         if not self.game.game_running:
             for player in self.game.players:
                 self.Playerlist.insertItem(-1, player.name)
-        else: #übrige Speiler dieser Runde
+        else:
             for player in self.game.players_left():
                 self.Playerlist.insertItem(-1, player.name)
             
@@ -49,11 +49,12 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.LabelBonus.setText(str(player.got_35p * 35))
     
     def start_game(self):
-        self.CreateNewPlayer.disable()
-        self.RemovePlayer.disable()
-        self.game.next_round()
+        self.CreateNewPlayer.setEnabled(False)
+        self.RemovePlayer.setEnabled(False)
+        self.NameIn.setEnabled(False)
+        self.game.next_round()  
     
-    def play_round(self):
+    def play(self):
         name = self.Playerlist.currentItem().text()
         self.game.play_round(name)
         self.DiceWidget.newRoll = self.game.diceroll
