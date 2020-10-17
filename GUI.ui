@@ -246,7 +246,7 @@ p, li { white-space: pre-wrap; }
       <x>592</x>
       <y>12</y>
       <width>171</width>
-      <height>571</height>
+      <height>600</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -625,6 +625,7 @@ p, li { white-space: pre-wrap; }
    <container>1</container>
    <slots>
     <signal>statusUpdated(QString)</signal>
+    <signal>AcesSignal(QString)</signal>
     <slot>roll()</slot>
     <slot>simple(1)</slot>
    </slots>
@@ -666,17 +667,17 @@ p, li { white-space: pre-wrap; }
   </connection>
   <connection>
    <sender>DiceWidget</sender>
-   <signal>statusUpdated(QString)</signal>
+   <signal>AcesSignal(QString)</signal>
    <receiver>AcesCount</receiver>
    <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>559</x>
-     <y>275</y>
+     <x>553</x>
+     <y>277</y>
     </hint>
     <hint type="destinationlabel">
-     <x>743</x>
-     <y>273</y>
+     <x>737</x>
+     <y>272</y>
     </hint>
    </hints>
   </connection>
