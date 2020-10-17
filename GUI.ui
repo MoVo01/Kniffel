@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>798</width>
-    <height>854</height>
+    <width>815</width>
+    <height>869</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,15 +56,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QTextEdit" name="PlaceToCommitPlayerNameProably">
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
+      <widget class="QLineEdit" name="lineEdit"/>
      </item>
      <item>
       <spacer name="verticalSpacer">
@@ -95,7 +87,7 @@ p, li { white-space: pre-wrap; }
      <x>20</x>
      <y>240</y>
      <width>771</width>
-     <height>591</height>
+     <height>621</height>
     </rect>
    </property>
    <widget class="DiceWidget" name="DiceWidget" native="true">
@@ -104,7 +96,7 @@ p, li { white-space: pre-wrap; }
       <x>10</x>
       <y>10</y>
       <width>571</width>
-      <height>571</height>
+      <height>601</height>
      </rect>
     </property>
     <widget class="QPushButton" name="DiceRoll">
@@ -253,14 +245,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="Button1er">
          <property name="text">
           <string>Aces</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="AcesCount">
+        <widget class="QLabel" name="Label1er">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -274,7 +266,7 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="Button2er">
          <property name="text">
           <string>Twos</string>
          </property>
@@ -295,14 +287,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="Button3er">
          <property name="text">
           <string>Threes</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="ThreesCount">
+        <widget class="QLabel" name="Label3er">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -316,14 +308,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="Button4er">
          <property name="text">
           <string>Fours</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="FoursCount">
+        <widget class="QLabel" name="Label4er">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -337,14 +329,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="Button5er">
          <property name="text">
           <string>Fives</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="FivesCount">
+        <widget class="QLabel" name="Label5er">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -358,14 +350,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
-        <widget class="QPushButton" name="pushButton_6">
+        <widget class="QPushButton" name="Button6er">
          <property name="text">
           <string>Sixes</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="SixesCount">
+        <widget class="QLabel" name="Label6er">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -379,7 +371,7 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_8">
        <item>
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="Bonus">
          <property name="text">
           <string>Bonus</string>
          </property>
@@ -389,7 +381,7 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="BonusCheck">
+        <widget class="QLabel" name="LabelBonus">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -403,14 +395,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_9">
        <item>
-        <widget class="QPushButton" name="pushButton_7">
+        <widget class="QPushButton" name="Button2ofKind">
          <property name="text">
           <string>2 of a kind</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="TwoOfAKind">
+        <widget class="QLabel" name="Label2ofKind">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -424,14 +416,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_10">
        <item>
-        <widget class="QPushButton" name="pushButton_8">
+        <widget class="QPushButton" name="Button2x2ofKind">
          <property name="text">
           <string>2x2 of a kind</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="TwoXTwoOfAKind">
+        <widget class="QLabel" name="Label2x2ofKind">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -445,14 +437,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_11">
        <item>
-        <widget class="QPushButton" name="pushButton_9">
+        <widget class="QPushButton" name="Button3ofKind">
          <property name="text">
           <string>3 of a kind</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="ThreeOfAKind">
+        <widget class="QLabel" name="Label3ofKind">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -466,14 +458,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_12">
        <item>
-        <widget class="QPushButton" name="pushButton_10">
+        <widget class="QPushButton" name="Button4ofKind">
          <property name="text">
           <string>4 of a kind</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="FourOfAKind">
+        <widget class="QLabel" name="Label4ofKind">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -487,14 +479,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_13">
        <item>
-        <widget class="QPushButton" name="pushButton_11">
+        <widget class="QPushButton" name="ButtonfullHouse">
          <property name="text">
           <string>Fullhouse</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="Fullhouse">
+        <widget class="QLabel" name="LabelfullHouse">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -508,14 +500,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_14">
        <item>
-        <widget class="QPushButton" name="pushButton_12">
+        <widget class="QPushButton" name="ButtonsmallStraight">
          <property name="text">
           <string>Sm. Straight</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="SmStraight">
+        <widget class="QLabel" name="LabelsmallStraight">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -529,14 +521,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_15">
        <item>
-        <widget class="QPushButton" name="pushButton_13">
+        <widget class="QPushButton" name="ButtonlargeStraight">
          <property name="text">
           <string>Lg. Straight</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="LgStraight">
+        <widget class="QLabel" name="LabellargeStraight">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -550,14 +542,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_16">
        <item>
-        <widget class="QPushButton" name="pushButton_14">
+        <widget class="QPushButton" name="Buttonkniffel">
          <property name="text">
           <string>Yahtzee</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="Kniffel">
+        <widget class="QLabel" name="Labelkniffel">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -571,14 +563,14 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_17">
        <item>
-        <widget class="QPushButton" name="pushButton_15">
+        <widget class="QPushButton" name="Buttonchance">
          <property name="text">
           <string>Chance</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="Chance">
+        <widget class="QLabel" name="Labelchance">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -592,7 +584,7 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QLabel" name="label_5">
+        <widget class="QLabel" name="TotalScore">
          <property name="text">
           <string>Total Score</string>
          </property>
@@ -602,7 +594,7 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="TotalScore">
+        <widget class="QLabel" name="LabelTotalScore">
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -626,6 +618,11 @@ p, li { white-space: pre-wrap; }
    <slots>
     <signal>statusUpdated(QString)</signal>
     <signal>AcesSignal(QString)</signal>
+    <signal>TwosSignal(QString)</signal>
+    <signal>ThreesSignal(QString)</signal>
+    <signal>FoursSignal(QString)</signal>
+    <signal>FivesSignal(QString)</signal>
+    <signal>SixesSignal(QString)</signal>
     <slot>roll()</slot>
     <slot>simple(1)</slot>
    </slots>
@@ -662,22 +659,6 @@ p, li { white-space: pre-wrap; }
     <hint type="destinationlabel">
      <x>383</x>
      <y>755</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>DiceWidget</sender>
-   <signal>AcesSignal(QString)</signal>
-   <receiver>AcesCount</receiver>
-   <slot>setText(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>553</x>
-     <y>277</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>737</x>
-     <y>272</y>
     </hint>
    </hints>
   </connection>
