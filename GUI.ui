@@ -81,9 +81,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="Play">
          <property name="text">
-          <string>Turn</string>
+          <string>Play</string>
          </property>
         </widget>
        </item>
@@ -940,38 +940,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>CreateNewPlayer</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>create_new_player()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>234</x>
-     <y>30</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>615</x>
-     <y>32</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>RemovePlayer</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>remove_player()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>276</x>
-     <y>70</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>616</x>
-     <y>68</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>DiceWidget</sender>
    <signal>RollSignal()</signal>
    <receiver>Form</receiver>
@@ -984,22 +952,6 @@
     <hint type="destinationlabel">
      <x>614</x>
      <y>115</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Reset</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>reset()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>753</x>
-     <y>197</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>616</x>
-     <y>197</y>
     </hint>
    </hints>
   </connection>
@@ -1244,18 +1196,82 @@
    </hints>
   </connection>
   <connection>
+   <sender>CreateNewPlayer</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>create_new_player()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>34</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>228</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemovePlayer</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>remove_player()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>250</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>233</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>StartGame</sender>
    <signal>clicked()</signal>
    <receiver>Form</receiver>
    <slot>start_game()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>257</x>
-     <y>199</y>
+     <x>246</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
-     <x>164</x>
-     <y>234</y>
+     <x>209</x>
+     <y>231</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Play</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>play()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>271</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>298</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Reset</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>710</x>
+     <y>205</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>577</x>
+     <y>227</y>
     </hint>
    </hints>
   </connection>
@@ -1267,5 +1283,6 @@
   <slot>reset()</slot>
   <slot>cat_button_clicked()</slot>
   <slot>start_game()</slot>
+  <slot>play()</slot>
  </slots>
 </ui>
