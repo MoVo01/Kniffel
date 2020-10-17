@@ -20,7 +20,7 @@ class DiceRoll:
             self.roll()
               
     def roll(self):
-        if self.count <= 3:
+        if self.count < 3:
             for i in range(len(self.free_dice)):
                 self.free_dice[i] = random.randint(1,6)
             self.count += 1
