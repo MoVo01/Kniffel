@@ -42,6 +42,7 @@ class DiceWidget(QWidget):
         
     def set_Roll(self, dr):
         self.newRoll = dr
+        self.update()
         
     def paintEvent(self, event):
         super().paintEvent(event)
@@ -53,7 +54,9 @@ class DiceWidget(QWidget):
         painter.drawRect(event.rect())
         
         if self.newRoll:
-   
+            
+            self.statusUpdated.emit("rolls remaining: {}".format(self.newRoll.rolls_left()))
+            
             for i in range (0,len(self.newRoll.free_dice)):
                 y1 = 2 * self.height() / 3 - (self.dice_width/2)
                 x1 = self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2)
@@ -96,10 +99,11 @@ class DiceWidget(QWidget):
         try:
             self.newRoll.roll()
             self.RollSignal.emit()
+            self.statusUpdated.emit("rolls remaining: {}".format(self.newRoll.rolls_left()))
             self.update()
             
         except RollError:
-            text = "You dont have any rolls left"
+            text = "You dont have any rolls left!!!"
             self.statusUpdated.emit(text)
             
     

@@ -68,7 +68,8 @@ class Categories:
             return 0
         
     def largeStraight(self):
-        if self.dice.sort() in [[1,2,3,4,5], [2,3,4,5,6]]:
+        self.dice.sort()
+        if self.dice in [[1,2,3,4,5], [2,3,4,5,6]]:
             return 40
         else:
             return 0
