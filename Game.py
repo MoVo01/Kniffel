@@ -5,7 +5,7 @@ Created on Thu Aug 20 16:29:53 2020
 @author: morit
 """
 
-import DiceRoll, Player, Categories
+import DiceRoll, Player
 
 class Game:
     
@@ -14,13 +14,15 @@ class Game:
         self.game_running = False
         self.round = 0
         self.played_this_round = []
-        self.currently_playing = 0
+        self.current_player_ind = 0
+        self.currently_playing = False
+        self.diceroll = None
         
-    def check_in(self, name): ## in GUI prüfen ob Name bereits vorhanden, dann nicht hinzu
-        if not self.game_running:
+    def check_in(self, name):
+        if not self.game_running and not filter(lambda x: x.name == name, self.players):
             self.players.append(Player(name))
             
-    def check_out(self, name):
+    def check_out(self, name): ## name muss in liste sein
         del self.players[self.nameindex(name)]
         
     def nameindex(self, name):
@@ -28,6 +30,9 @@ class Game:
             if self.players[i].name == name:
                 return i
         return -1
+    
+    def current_player(self):
+        return self.players[self.current_player_ind]
         
     def next_round(self):
         if len(self.played_this_round) == len(self.players):
@@ -38,14 +43,25 @@ class Game:
             return 0
         
     def play_round(self, name):
+        self.game_running = True
         index = self.nameindex(name)
-        if self.player[index] not in self.played_this_round:
-            self.currently_playing = index
+        if self.player[index] not in self.played_this_round and not self.currently_playing:
+            self.current_player_ind = index
+            self.diceroll = DiceRoll()
             return 1
         else:
             return 0
     
-    def throw
+    def roll(self):
+        if self.diceroll.rolls_left():
+            self.diceroll.roll()
+            return 1
+        else:
+            return 0
+        
+        
+    def chooseCat(self, key): ## key aus Player.keys
+        pass
         
     def players_left(self):
         left = []

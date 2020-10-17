@@ -11,16 +11,16 @@ class RollError(Exception):
 
 class DiceRoll:
     
-    def __init__(self, free_dice = [0 for i in range(5)]):
+    def __init__(self, dice = [0 for i in range(5)]):
         self.picked_dice = []
-        self.free_dice = free_dice
+        self.free_dice = dice
         self.count = 1
-        if free_dice == [0 for i in range(5)]:
+        if dice == [0 for i in range(5)]:
             self.count = 0
             self.roll()
               
     def roll(self):
-        if self.count <= 3:
+        if self.rolls_left():
             for i in range(len(self.free_dice)):
                 self.free_dice[i] = random.randint(1,6)
             self.count += 1

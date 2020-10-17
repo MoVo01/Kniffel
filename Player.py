@@ -6,10 +6,12 @@ Created on Wed Aug 12 16:08:58 2020
 """
 
 class Player:
-    def __init__(self, name = "playernumberone"):
-        self.keys = ["1er", "2er", "3er", "4er", "5er", "6er", "fullHouse", 
+    
+    keys = ["1er", "2er", "3er", "4er", "5er", "6er", "fullHouse", 
                      "smallStraight", "largeStraight", "2ofKind", "2x2ofKind", 
                      "3ofKind", "4ofKind", "chance", "kniffel"]
+    
+    def __init__(self, name = "playernumberone"):
         self.points = dict.fromkeys(self.keys, 0)
         self.chosen_cat = dict.fromkeys(self.keys, False)
         self.got_35p = False
