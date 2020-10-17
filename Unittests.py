@@ -29,8 +29,6 @@ class DiceRollTest(unittest.TestCase):
         self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         dr1.roll()
         self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
-        dr1.roll()
-        self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         
         # ergebnis ändert sich nach drittem wurf nicht mehr
         old_dice = copy.deepcopy(dr1.free_dice)
@@ -97,7 +95,7 @@ class DiceRollTest(unittest.TestCase):
         self.assertEqual(dr3.picked_dice, [], msg = "falscher Wuerfel ausgewaehlt")
         
                 
-class CategoriesTest(unittest.TestCase):
+class CategoriesTest(unittest.TestCase): ## hier fehlt test für keydict
     
     
     def __init__(self):
