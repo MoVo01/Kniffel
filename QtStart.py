@@ -19,7 +19,6 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.setupUi(self)
     
 if __name__ == "__main__":
-    # In Spyder kann nur eine Qt-Applikation laufen und sie werden nicht anschliessend geloescht
     if QtCore.QCoreApplication.instance() is not None:
         app = QtCore.QCoreApplication.instance()
     else:
