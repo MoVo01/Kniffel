@@ -12,11 +12,17 @@ from PyQt5 import QtCore
 from PyQt5.Qt import Qt
 from PyQt5.QtGui import QPainter, QPixmap
 from PyQt5.QtWidgets import QWidget, QApplication
-#import Categories
+from Categories import Categories
 
 class DiceWidget(QWidget):
     
     statusUpdated = QtCore.pyqtSignal(str)
+    AcesSignal = QtCore.pyqtSignal(int)
+    TwosSignal = QtCore.pyqtSignal(int)
+    ThreesSignal = QtCore.pyqtSignal(int)
+    FoursSignal = QtCore.pyqtSignal(int)
+    FivesSignal = QtCore.pyqtSignal(int)
+    SixesSignal = QtCore.pyqtSignal(int)
     
     def __init__(self, parent=None):
         super().__init__(parent)   
@@ -38,7 +44,7 @@ class DiceWidget(QWidget):
         self.fuenf = Fuenf.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.sechs = Sechs.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.newRoll = DiceRoll()
-        #self.categories = Categories(self.newRoll.all_dice)
+        self.categories = Categories(self.newRoll.all_dice())
         
     def paintEvent(self, event):
         super().paintEvent(event)
@@ -94,7 +100,8 @@ class DiceWidget(QWidget):
         try:
             self.newRoll.roll()
             self.update()
-            self.statusUpdated.emit()
+            self.categories = Categories(self.newRoll.all_dice())
+            self.AcesSignal.emit(str(self.categories.simple(1)))
         except RollError:
             text = "You dont have any rolls left"
             self.statusUpdated.emit(text)
@@ -111,7 +118,7 @@ class DiceWidget(QWidget):
                 else:
                     pass
                 self.update()
-                self.statusUpdated.emit()
+                
             
     def posToIndex(self, pos):
         if pos.y() > self.height()/2:
