@@ -1275,6 +1275,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>Playerlist</sender>
+   <signal>currentItemChanged(QListWidgetItem*,QListWidgetItem*)</signal>
+   <receiver>Form</receiver>
+   <slot>list_player_selected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>121</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>create_new_player()</slot>
@@ -1284,5 +1300,6 @@
   <slot>cat_button_clicked()</slot>
   <slot>start_game()</slot>
   <slot>play()</slot>
+  <slot>list_player_selected()</slot>
  </slots>
 </ui>
