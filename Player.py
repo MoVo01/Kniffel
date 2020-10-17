@@ -29,7 +29,7 @@ class Player:
         return
 
     def score(self):
-        return sum(self.points.values())
+        return sum(self.points.values()) + 35 * self.got_35p
     
     def unused_cat(self):
         cat_items = list(filter(lambda y: y[1] == False, list(self.chosen_cat.items())))

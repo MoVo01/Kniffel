@@ -48,6 +48,8 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         player = self.game.player_from_name(self.Playerlist.currentItem().text())
         for key in Player.Player.keys:
             getattr(self, "Label{}".format(key)).setText(str(player.points[key]))
+        self.LabelTotalScore.setText(str(player.score()))
+        self.LabelBonus.setText(str(player.got_35p * 35))
             
         
         
