@@ -9,6 +9,54 @@ import DiceRoll, Player, Categories
 
 class Game:
     
+    def __init__(self):
+        self.players = []
+        self.game_running = False
+        self.round = 0
+        self.played_this_round = []
+        self.currently_playing = 0
+        
+    def check_in(self, name): ## in GUI prüfen ob Name bereits vorhanden, dann nicht hinzu
+        if not self.game_running:
+            self.players.append(Player(name))
+            
+    def check_out(self, name):
+        del self.players[self.nameindex(name)]
+        
+    def nameindex(self, name):
+        for i in range(len(self.players)):
+            if self.players[i].name == name:
+                return i
+        return -1
+        
+    def next_round(self):
+        if len(self.played_this_round) == len(self.players):
+            self.round += 1
+            self.played_this_round = []
+            return 1
+        else:
+            return 0
+        
+    def play_round(self, name):
+        index = self.nameindex(name)
+        if self.player[index] not in self.played_this_round:
+            self.currently_playing = index
+            return 1
+        else:
+            return 0
+    
+    def throw
+        
+    def players_left(self):
+        left = []
+        for player in self.players:
+            if player not in self.played_this_round:
+                left.append(player)
+        return left
+        
+    
+    
+    
     def __init__(self, rnd = 1):
         self.players = []
         self.results = []

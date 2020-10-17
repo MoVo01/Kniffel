@@ -33,8 +33,8 @@ class Player:
         cat_items = list(filter(lambda y: y[1] == False, list(self.chosen_cat.items())))
         return (lambda x: [z[0] for z in x])(cat_items)
     
-    def current_turn(self):
-        return len(list(filter(lambda y: y[1] == True, list(self.chosen_cat.items())))) + 1
+    #def current_turn(self):
+    #    return len(list(filter(lambda y: y[1] == True, list(self.chosen_cat.items())))) + 1
         
                     
         
