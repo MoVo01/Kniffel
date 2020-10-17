@@ -94,6 +94,7 @@ class DiceWidget(QWidget):
     def roll(self):
         try:
             self.newRoll.roll()
+            self.RollSignal.emit()
             self.update()
             
         except RollError:
