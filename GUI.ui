@@ -977,11 +977,108 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>Button1er</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>686</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>687</x>
+     <y>194</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button2er</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>703</x>
+     <y>298</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>697</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button3er</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>683</x>
+     <y>342</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>703</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button4er</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>716</x>
+     <y>379</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>725</x>
+     <y>212</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button5er</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>684</x>
+     <y>417</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>662</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button6er</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>653</x>
+     <y>457</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>759</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>create_new_player()</slot>
   <slot>remove_player()</slot>
   <slot>update_labels()</slot>
   <slot>reset()</slot>
+  <slot>cat_button_clicked()</slot>
  </slots>
 </ui>
