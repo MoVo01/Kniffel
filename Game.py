@@ -5,7 +5,7 @@ Created on Thu Aug 20 16:29:53 2020
 @author: morit
 """
 
-import DiceRoll, Player
+import DiceRoll, Player, Categories
 
 class Game:
     
@@ -19,11 +19,12 @@ class Game:
         self.diceroll = None
         
     def check_in(self, name):
-        if not self.game_running and not filter(lambda x: x.name == name, self.players):
+        if not self.game_running and not name in filter(lambda x: x.name == name, self.players):
             self.players.append(Player(name))
             
     def check_out(self, name): ## name muss in liste sein
-        del self.players[self.nameindex(name)]
+        if name in [p.name for p in self.players]:
+            del self.players[self.nameindex(name)]
         
     def nameindex(self, name):
         for i in range(len(self.players)):
@@ -60,8 +61,14 @@ class Game:
             return 0
         
         
-    def chooseCat(self, key): ## key aus Player.keys
-        pass
+    def chooseCat(self, key):  ## key aus Player.keys
+        player = self.players[self.current_player_ind]
+        cat = Categories(self.diceroll.all_dice())
+        pointdict = cat.
+        if key in player.unused_cat():
+            
+        
+        self.currently_playing = False
         
     def players_left(self):
         left = []
