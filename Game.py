@@ -20,7 +20,7 @@ class Game:
         
     def check_in(self, name):
         if not self.game_running and not name in filter(lambda x: x.name == name, self.players):
-            self.players.append(Player(name))
+            self.players.append(Player.Player(name))
             
     def check_out(self, name):
         if name in [p.name for p in self.players]:
@@ -49,7 +49,7 @@ class Game:
         if self.players[index] not in self.played_this_round and not self.currently_playing:
             self.current_player_ind = index
             self.currently_playing = True
-            self.diceroll = DiceRoll()
+            self.diceroll = DiceRoll.DiceRoll()
             return 1
         else:
             return 0
@@ -65,7 +65,7 @@ class Game:
     def chooseCat(self, key):  ## key aus Player.keys
         player = self.players[self.current_player_ind]
         if key in player.unused_cat():
-            cat = Categories(self.diceroll.all_dice())
+            cat = Categories.Categories(self.diceroll.all_dice())
             pointdict = cat.keydict(player.unused_cat())
             player.chosen_cat[key] = True
             player.points[key] = pointdict[key]

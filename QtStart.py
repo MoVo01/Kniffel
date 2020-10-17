@@ -22,15 +22,35 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         
         self.game = Game.Game()
         
-    def cerate_new_player(self):
-        if self.NameIn.text != "":
-            self.game.check_in(self.NameIn.text)
+    def create_new_player(self):
+        if str(self.NameIn.text()) != "":
+            self.game.check_in(str(self.NameIn.text()))
+            self.updatePlayerlist()
+            self.NameIn.clear()
             
     def remove_player(self):
-        self.game.check_out(self.Playerlist.CurrentItem())
+        self.game.check_out(self.Playerlist.currentItem().text())
+        self.updatePlayerlist()
+        
+    def updatePlayerlist(self):
+        self.Playerlist.clear()
+        if not self.game.game_running:
+            for player in self.game.players:
+                self.Playerlist.insertItem(-1, player.name)
+        else: #übrige Speiler dieser Runde
+            pass
+            
+    
+    def reset():
+        pass
             
     def update_labels(self):
-        player = self.game.player_from_name()
+        player = self.game.player_from_name(self.Playerlist.CurrentItem().text())
+        for key in Player.keys:
+            getattr(self, "Label{}".format(key)).setText(player.points[key])
+            
+        
+        
         
         
     
