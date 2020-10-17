@@ -10,8 +10,8 @@ import os
 from DiceRoll import DiceRoll, RollError
 from PyQt5 import QtCore
 from PyQt5.Qt import Qt
-from PyQt5.QtGui import QPainter, QPixmap, QCursor, QBrush
-from PyQt5.QtWidgets import QWidget, QMessageBox, QApplication
+from PyQt5.QtGui import QPainter, QPixmap
+from PyQt5.QtWidgets import QWidget, QApplication
 
 class DiceWidget(QWidget):
     
@@ -132,8 +132,8 @@ if __name__ == "__main__":
     else:
         app = QApplication(sys.argv)
         
-    dice = DiceWidget()
-    dice.resize(800,600)
-    dice.show()
-    sys.exit(app.exec_())
+    #dice = DiceWidget()
+    #dice.resize(800,600)
+    #dice.show()
+    #sys.exit(app.exec_())
 
