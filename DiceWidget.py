@@ -38,8 +38,10 @@ class DiceWidget(QWidget):
         self.vier = Vier.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.fuenf = Fuenf.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.sechs = Sechs.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
-        self.newRoll = DiceRoll()
-        self.categories = Categories(self.newRoll.all_dice())
+        self.newRoll = None
+        
+    def set_Roll(self, dr):
+        self.newRoll = dr
         
     def paintEvent(self, event):
         super().paintEvent(event)
@@ -47,49 +49,50 @@ class DiceWidget(QWidget):
         painter = QPainter(self)
         
         
-        painter.setPen(Qt.NoPen)
-        painter.setBrush(Qt.darkGreen)
-        painter.drawRect(event.rect())
-        
-        
-        
-        
-        for i in range (0,len(self.newRoll.free_dice)):
-            y1 = 2 * self.height() / 3 - (self.dice_width/2)
-            x1 = self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2)
-            if self.newRoll.free_dice[i] == 1:
-                painter.drawPixmap(x1, y1, self.eins)
-            elif self.newRoll.free_dice[i] == 2:
-                painter.drawPixmap(x1, y1, self.zwei)
-            elif self.newRoll.free_dice[i] == 3:
-                painter.drawPixmap(x1, y1, self.drei)
-            elif self.newRoll.free_dice[i] == 4:
-                painter.drawPixmap(x1, y1, self.vier)
-            elif self.newRoll.free_dice[i] == 5:
-                painter.drawPixmap(x1, y1, self.fuenf)
-            elif self.newRoll.free_dice[i] == 6:
-                painter.drawPixmap(x1, y1, self.sechs)
-            else:
-                print("Somethings wrong")
-          
-        for i in range (0,len(self.newRoll.picked_dice)):
-            x2 = self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2)
-            y2 = self.height() / 3 - (self.dice_width/2)
-            if self.newRoll.picked_dice[i] == 1:
-                painter.drawPixmap(x2, y2, self.eins)
-            elif self.newRoll.picked_dice[i] == 2:
-                painter.drawPixmap(x2, y2, self.zwei)
-            elif self.newRoll.picked_dice[i] == 3:
-                painter.drawPixmap(x2, y2, self.drei)
-            elif self.newRoll.picked_dice[i] == 4:
-                painter.drawPixmap(x2, y2, self.vier)
-            elif self.newRoll.picked_dice[i] == 5:
-                painter.drawPixmap(x2, y2, self.fuenf)
-            elif self.newRoll.picked_dice[i] == 6:
-                painter.drawPixmap(x2, y2, self.sechs)
-            else:
-                print("Somethings wrong")
+        if self.newRoll:
+            
+            painter.setPen(Qt.NoPen)
+            painter.setBrush(Qt.darkGreen)
+            painter.drawRect(event.rect())
+            
+            
+            for i in range (0,len(self.newRoll.free_dice)):
+                y1 = 2 * self.height() / 3 - (self.dice_width/2)
+                x1 = self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2)
+                if self.newRoll.free_dice[i] == 1:
+                    painter.drawPixmap(x1, y1, self.eins)
+                elif self.newRoll.free_dice[i] == 2:
+                    painter.drawPixmap(x1, y1, self.zwei)
+                elif self.newRoll.free_dice[i] == 3:
+                    painter.drawPixmap(x1, y1, self.drei)
+                elif self.newRoll.free_dice[i] == 4:
+                    painter.drawPixmap(x1, y1, self.vier)
+                elif self.newRoll.free_dice[i] == 5:
+                    painter.drawPixmap(x1, y1, self.fuenf)
+                elif self.newRoll.free_dice[i] == 6:
+                    painter.drawPixmap(x1, y1, self.sechs)
+                else:
+                    print("Somethings wrong")
+              
+            for i in range (0,len(self.newRoll.picked_dice)):
+                x2 = self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2)
+                y2 = self.height() / 3 - (self.dice_width/2)
+                if self.newRoll.picked_dice[i] == 1:
+                    painter.drawPixmap(x2, y2, self.eins)
+                elif self.newRoll.picked_dice[i] == 2:
+                    painter.drawPixmap(x2, y2, self.zwei)
+                elif self.newRoll.picked_dice[i] == 3:
+                    painter.drawPixmap(x2, y2, self.drei)
+                elif self.newRoll.picked_dice[i] == 4:
+                    painter.drawPixmap(x2, y2, self.vier)
+                elif self.newRoll.picked_dice[i] == 5:
+                    painter.drawPixmap(x2, y2, self.fuenf)
+                elif self.newRoll.picked_dice[i] == 6:
+                    painter.drawPixmap(x2, y2, self.sechs)
+                else:
+                    print("Somethings wrong")
                 
+      
         
     def roll(self):
         try:

@@ -15,7 +15,7 @@ import Game, Player
 Ui_MainWindow, WindowBaseClass = uic.loadUiType("GUI.ui")
 
 class MyDialog(WindowBaseClass, Ui_MainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, parent = None):
         WindowBaseClass.__init__(self, parent)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
@@ -39,17 +39,33 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
                 self.Playerlist.insertItem(-1, player.name)
         else: #übrige Speiler dieser Runde
             pass
-            
     
-    def reset():
-        pass
+    def start_game(self):
+        self.CreateNewPlayer.disable()
+        self.RemovePlayer.disable()
+        self.game.next_round()
+    
+    def play_round(self):
+        name = self.Playerlist.currentItem().text()
+        self.game.play_round()
+                
             
     def update_labels(self):
         player = self.game.player_from_name(self.Playerlist.currentItem().text())
         for key in Player.Player.keys:
             getattr(self, "Label{}".format(key)).setText(str(player.points[key]))
-        self.LabelTotalScore.setText(str(player.score()))
+        self.LabelTotalScore.setText(str(player.score()+42))
         self.LabelBonus.setText(str(player.got_35p * 35))
+        
+    def cat_button_clicked(self):
+        if self.game.currently_playing:
+            cat = self.sender().objectName()[5:]
+            self.game.chooseCat(cat)
+            self.sender.disable()
+            self.update_labels()
+            
+    def reset():
+        pass
             
         
         
