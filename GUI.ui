@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>891</width>
+    <width>827</width>
     <height>911</height>
    </rect>
   </property>
@@ -1070,6 +1070,150 @@
     <hint type="destinationlabel">
      <x>759</x>
      <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button2ofKind</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>678</x>
+     <y>523</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>524</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button2x2ofKind</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>701</x>
+     <y>571</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>569</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button3ofKind</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>694</x>
+     <y>607</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>607</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button4ofKind</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>647</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>641</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ButtonfullHouse</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>689</x>
+     <y>687</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>682</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ButtonsmallStraight</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>673</x>
+     <y>727</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>724</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ButtonlargeStraight</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>675</x>
+     <y>766</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>767</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Buttonkniffel</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>695</x>
+     <y>800</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>803</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Buttonchance</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>cat_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>696</x>
+     <y>834</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>840</y>
     </hint>
    </hints>
   </connection>
