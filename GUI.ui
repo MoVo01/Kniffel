@@ -56,7 +56,18 @@
       </widget>
      </item>
      <item>
+<<<<<<< Updated upstream
       <widget class="QLineEdit" name="lineEdit"/>
+=======
+      <widget class="QPushButton" name="RemovePlayer">
+       <property name="text">
+        <string>PushButton</string>
+       </property>
+      </widget>
+>>>>>>> Stashed changes
+     </item>
+     <item>
+      <widget class="QLineEdit" name="NameIn"/>
      </item>
      <item>
       <spacer name="verticalSpacer">
@@ -232,7 +243,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>592</x>
@@ -662,5 +673,77 @@
     </hint>
    </hints>
   </connection>
+<<<<<<< Updated upstream
+=======
+  <connection>
+   <sender>DiceWidget</sender>
+   <signal>AcesSignal(QString)</signal>
+   <receiver>AcesCount</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>553</x>
+     <y>277</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>737</x>
+     <y>272</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DiceWidget</sender>
+   <signal>statusUpdated(QString)</signal>
+   <receiver>Form</receiver>
+   <slot>set_labels()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>513</x>
+     <y>479</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>607</x>
+     <y>110</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CreateNewPlayer</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>create_new_player()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>629</x>
+     <y>38</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemovePlayer</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>remove_player()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>636</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+>>>>>>> Stashed changes
  </connections>
+ <slots>
+  <slot>set_labels()</slot>
+  <slot>create_new_player()</slot>
+  <slot>remove_player()</slot>
+ </slots>
 </ui>
