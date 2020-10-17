@@ -45,9 +45,9 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         pass
             
     def update_labels(self):
-        player = self.game.player_from_name(self.Playerlist.CurrentItem().text())
-        for key in Player.keys:
-            getattr(self, "Label{}".format(key)).setText(player.points[key])
+        player = self.game.player_from_name(self.Playerlist.currentItem().text())
+        for key in Player.Player.keys:
+            getattr(self, "Label{}".format(key)).setText(str(player.points[key]))
             
         
         
