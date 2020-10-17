@@ -112,13 +112,13 @@ class DiceWidget(QWidget):
     def posToIndex(self, pos):
         if pos.y() > self.height()/2:
             for i in range (0,len(self.newRoll.free_dice)):
-                x1 = self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) #- (self.dice_width/2)
+                x1 = self.width() * ((i+1) / (len(self.newRoll.free_dice)+1))
                 if abs(pos.x() - x1) <= self.dice_width/2:
                     return i
             return -1
         else:
             for i in range (0,len(self.newRoll.picked_dice)):
-                x1 = self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) #- (self.dice_width/2)
+                x1 = self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1))
                 if abs(pos.x() - x1) <= self.dice_width/2:
                     return i
             return -1
