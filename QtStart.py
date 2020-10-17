@@ -8,6 +8,7 @@ Created on Thu Sep 17 21:56:15 2020
 
 import sys
 from PyQt5 import QtCore, QtWidgets, uic
+from DiceWidget import DiceWidget
 
 
 Ui_MainWindow, WindowBaseClass = uic.loadUiType("GUI.ui")
