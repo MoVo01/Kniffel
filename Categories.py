@@ -14,8 +14,12 @@ class Categories:
     def simple(self, num):
         return self.dice.count(num)*num
     
+    def twoOfKind(self):
+        return self.xOfKind(2)
+    
     def threeOfKind(self):
         return self.xOfKind(3)
+    
     def fourOfKind(self):
         return self.xOfKind(4)
     
