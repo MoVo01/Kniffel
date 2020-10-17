@@ -36,6 +36,7 @@ class Game:
         return self.players[self.nameindex(name)]
         
     def next_round(self):
+        self.game_running = True
         if len(self.played_this_round) == len(self.players) and round < 15:
             self.round += 1
             self.played_this_round = []
@@ -44,7 +45,6 @@ class Game:
             return 0
         
     def play_round(self, name):
-        self.game_running = True
         index = self.nameindex(name)
         if self.players[index] not in self.played_this_round and not self.currently_playing:
             self.current_player_ind = index
