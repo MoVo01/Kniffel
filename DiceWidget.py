@@ -47,15 +47,13 @@ class DiceWidget(QWidget):
         super().paintEvent(event)
         
         painter = QPainter(self)
-        
+            
+        painter.setPen(Qt.NoPen)
+        painter.setBrush(Qt.darkGreen)
+        painter.drawRect(event.rect())
         
         if self.newRoll:
-            
-            painter.setPen(Qt.NoPen)
-            painter.setBrush(Qt.darkGreen)
-            painter.drawRect(event.rect())
-            
-            
+   
             for i in range (0,len(self.newRoll.free_dice)):
                 y1 = 2 * self.height() / 3 - (self.dice_width/2)
                 x1 = self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2)
