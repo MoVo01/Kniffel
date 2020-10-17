@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>854</width>
-    <height>930</height>
+    <width>830</width>
+    <height>911</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>20</x>
      <y>10</y>
      <width>421</width>
-     <height>221</height>
+     <height>211</height>
     </rect>
    </property>
    <widget class="QListWidget" name="Playerlist">
@@ -93,15 +93,15 @@
     <rect>
      <x>20</x>
      <y>240</y>
-     <width>821</width>
-     <height>681</height>
+     <width>801</width>
+     <height>661</height>
     </rect>
    </property>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>0</x>
+      <y>0</y>
       <width>800</width>
       <height>660</height>
      </rect>
@@ -340,7 +340,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="TwosCount">
+          <widget class="QLabel" name="Label2er">
            <property name="minimumSize">
             <size>
              <width>80</width>
@@ -872,14 +872,10 @@
    <container>1</container>
    <slots>
     <signal>statusUpdated(QString)</signal>
-    <signal>AcesSignal(QString)</signal>
-    <signal>TwosSignal(QString)</signal>
-    <signal>ThreesSignal(QString)</signal>
-    <signal>FoursSignal(QString)</signal>
-    <signal>FivesSignal(QString)</signal>
-    <signal>SixesSignal(QString)</signal>
+    <signal>RollSignal()</signal>
     <slot>roll()</slot>
     <slot>simple(1)</slot>
+    <slot>slot1()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -896,8 +892,8 @@
      <y>679</y>
     </hint>
     <hint type="destinationlabel">
-     <x>406</x>
-     <y>793</y>
+     <x>341</x>
+     <y>875</y>
     </hint>
    </hints>
   </connection>
@@ -908,8 +904,8 @@
    <slot>roll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>550</x>
-     <y>801</y>
+     <x>571</x>
+     <y>883</y>
     </hint>
     <hint type="destinationlabel">
      <x>383</x>
@@ -917,5 +913,75 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>CreateNewPlayer</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>create_new_player()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>366</x>
+     <y>29</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>615</x>
+     <y>32</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemovePlayer</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>remove_player()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>408</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>616</x>
+     <y>68</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DiceWidget</sender>
+   <signal>RollSignal()</signal>
+   <receiver>Form</receiver>
+   <slot>update_labels()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>488</x>
+     <y>296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>614</x>
+     <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Reset</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>363</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>616</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>create_new_player()</slot>
+  <slot>remove_player()</slot>
+  <slot>update_labels()</slot>
+  <slot>reset()</slot>
+ </slots>
 </ui>
