@@ -12,6 +12,7 @@ import copy
 # tested classes
 import DiceRoll as f_dr
 import Categories as f_ca
+import Game as f_ga
 
 class DiceRollTest(unittest.TestCase):
     
@@ -195,3 +196,61 @@ class CategoriesTest(unittest.TestCase): ## hier fehlt test für keydict
         self.assertEqual(self.ca4.chance(),19, msg = "falsche Auswertung in Chance")
         self.assertEqual(self.ca5.chance(), 30, msg = "falsche Auswertung in Chance")
         self.assertEqual(self.ca6.chance(), 16, msg = "falsche Auswertung in Chance")
+        
+        
+        
+ #-------------NEU---NEU---NEU---NEU---NEU------------------       
+class GameTest(unittest.TestCase):
+    
+    def __init__(self):
+        super(self.__class__, self).__init__()
+        ga1= f_ga.Game()
+        ga1.players=["Anna","Betty","Claus"]
+        
+        
+    def test_check_in(self):
+        ga1.check_in("Doris")
+        self.assertEqual(ga1.players,["Anna","Betty","Claus","Doris"],msg="Spieler wurde nicht hinzugefügt")
+        
+        
+        
+    def test_check_out(self):
+        ga1.check_out("Carl")
+        self.assertEqual(ga1.players,["Anna","Betty","Claus","Doris"],msg="nicht vorhandener Spieler bei check_out")
+        ga1.check_out("Betty")
+        self.assertEqual(ga1.players,["Anna","Claus","Doris"],msg="Fehler bei korrektem Spieler check_out")
+        
+        
+    def test_next_round(self):
+        
+        ga1.played_this_round=["Anna","Claus","Doris"]
+        ga1.round=13
+        self.assertEqual(ga1.round,14,msg="Runde wurde nicht hochgesetzt")
+        ga1.played_this_round=["Anna","Claus"]
+        ga1.round=13
+        self.assertEqual(ga1.round,13,msg="Runde wurde falsch hochgesetzt")
+        ga1.played_this_round=["Anna","Claus","Doris"]
+        ga1.round=15
+        self.assertEqual(ga1.round,15,msg="Runde wurde trotzt Spielende hochgesetzt")
+        
+        
+    def test_choose_cat(self):
+        
+ #      def chooseCat(self, key):  ## key aus Player.keys
+  #      player = self.players[self.current_player_ind]
+   #     if key in player.unused_cat():
+    #        cat = Categories(self.diceroll.all_dice())
+     #       pointdict = cat.keydict(player.unused_cat())
+      #      player.chosen_cat[key] = True
+       #     player.points[key] = pointdict[key]
+        #    player.check_35p()
+         #   self.currently_playing = False
+          #  self.played_this_round.append(player)
+        
+         
+        
+        
+        
+    def test_players_left(self):
+        ga1.played_this_round=["Anna"]
+        self.assertEqual(ga1.players_left(),["Claus","Doris"],msg="Fehler in Liste verbleibender Spieler")        
