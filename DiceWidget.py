@@ -17,6 +17,7 @@ from Categories import Categories
 class DiceWidget(QWidget):
     
     statusUpdated = QtCore.pyqtSignal(str)
+    RollSignal = QtCore.pyqtSignal()
     
     def __init__(self, parent=None):
         super().__init__(parent)   

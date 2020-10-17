@@ -8,7 +8,7 @@ Created on Thu Sep 17 21:56:15 2020
 
 import sys
 from PyQt5 import QtCore, QtWidgets, uic
-import Game
+import Game, Player
 
 
 
@@ -27,11 +27,12 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
             self.game.check_in(self.NameIn.text)
             
     def remove_player(self):
-        
+        self.game.check_out(self.Playerlist.CurrentItem())
             
+    def update_labels(self):
+        player = self.game.player_from_name()
         
-    def set_labels(self):
-        pass
+        
     
 if __name__ == "__main__":
     if QtCore.QCoreApplication.instance() is not None:
