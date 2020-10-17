@@ -31,6 +31,9 @@ class Game:
             if self.players[i].name == name:
                 return i
         return -1
+    
+    def player_from_name(self, name):
+        return self.players[self.nameindex(name)]
         
     def next_round(self):
         if len(self.played_this_round) == len(self.players) and round < 15:
