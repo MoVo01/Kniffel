@@ -11,6 +11,7 @@ from PyQt5 import QtCore, QtWidgets, uic
 from DiceWidget import DiceWidget
 
 
+
 Ui_MainWindow, WindowBaseClass = uic.loadUiType("GUI.ui")
 
 class MyDialog(WindowBaseClass, Ui_MainWindow):

@@ -12,6 +12,7 @@ from PyQt5 import QtCore
 from PyQt5.Qt import Qt
 from PyQt5.QtGui import QPainter, QPixmap
 from PyQt5.QtWidgets import QWidget, QApplication
+#import Categories
 
 class DiceWidget(QWidget):
     
@@ -37,6 +38,7 @@ class DiceWidget(QWidget):
         self.fuenf = Fuenf.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.sechs = Sechs.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.newRoll = DiceRoll()
+        #self.categories = Categories(self.newRoll.all_dice)
         
     def paintEvent(self, event):
         super().paintEvent(event)
@@ -92,6 +94,7 @@ class DiceWidget(QWidget):
         try:
             self.newRoll.roll()
             self.update()
+            self.statusUpdated.emit()
         except RollError:
             text = "You dont have any rolls left"
             self.statusUpdated.emit(text)
@@ -108,6 +111,7 @@ class DiceWidget(QWidget):
                 else:
                     pass
                 self.update()
+                self.statusUpdated.emit()
             
     def posToIndex(self, pos):
         if pos.y() > self.height()/2:
