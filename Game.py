@@ -37,7 +37,7 @@ class Game:
         
     def next_round(self):
         self.game_running = True
-        if len(self.played_this_round) == len(self.players) and round < 15:
+        if len(self.played_this_round) == len(self.players) and self.round < 15:
             self.round += 1
             self.played_this_round = []
             return 1
@@ -47,10 +47,10 @@ class Game:
     def play_round(self, name):
         index = self.nameindex(name)
         if self.players[index] not in self.played_this_round and not self.currently_playing:
+            print("play_round if")
             self.current_player_ind = index
             self.currently_playing = True
-            self.diceroll = DiceRoll.DiceRoll()
-            self.played_this_round.append(self.players[self.current_player_ind])
+            self.diceroll = DiceRoll.DiceRoll()       
             return 1
         else:
             return 0
@@ -70,9 +70,11 @@ class Game:
             pointdict = cat.keydict(player.unused_cat())
             player.chosen_cat[key] = True
             player.points[key] = pointdict[key]
-            player.check_35p()
+            player.check35p()
             self.currently_playing = False
             self.played_this_round.append(player)
+            if len(self.players) == len(self.played_this_round):
+                self.next_round()     
         
     
     def players_left(self):

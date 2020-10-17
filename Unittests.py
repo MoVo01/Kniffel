@@ -130,12 +130,12 @@ class CategoriesTest(unittest.TestCase): ## hier fehlt test für keydict
         
     def test_fourOfKind(self):
         
-        self.assertEqual(self.ca1.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
-        self.assertEqual(self.ca2.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
-        self.assertEqual(self.ca3.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
-        self.assertEqual(self.ca4.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
-        self.assertEqual(self.ca5.threeOfKind(), 30, msg = "falsche Auswertung in FourfKind")
-        self.assertEqual(self.ca6.threeOfKind(), 0, msg = "falsche Auswertung in FourOfKind")    
+        self.assertEqual(self.ca1.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca2.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca3.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca4.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca5.fourOfKind(), 30, msg = "falsche Auswertung in FourfKind")
+        self.assertEqual(self.ca6.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")    
     
         
     def test_kniffel(self):
@@ -204,34 +204,34 @@ class GameTest(unittest.TestCase):
     
     def __init__(self):
         super(self.__class__, self).__init__()
-        ga1= f_ga.Game()
-        ga1.players=["Anna","Betty","Claus"]
+        ga1 = f_ga.Game()
+        ga1.players=["Anna", "Betty", "Claus"]
         
         
     def test_check_in(self):
         ga1.check_in("Doris")
-        self.assertEqual(ga1.players,["Anna","Betty","Claus","Doris"],msg="Spieler wurde nicht hinzugefügt")
+        self.assertEqual(ga1.players,["Anna", "Betty", "Claus", "Doris"], msg = "Spieler wurde nicht hinzugefügt")
         
         
         
     def test_check_out(self):
         ga1.check_out("Carl")
-        self.assertEqual(ga1.players,["Anna","Betty","Claus","Doris"],msg="nicht vorhandener Spieler bei check_out")
+        self.assertEqual(ga1.players, ["Anna", "Betty", "Claus", "Doris"], msg = "nicht vorhandener Spieler bei check_out")
         ga1.check_out("Betty")
-        self.assertEqual(ga1.players,["Anna","Claus","Doris"],msg="Fehler bei korrektem Spieler check_out")
+        self.assertEqual(ga1.players, ["Anna", "Claus", "Doris"], msg = "Fehler bei korrektem Spieler check_out")
         
         
     def test_next_round(self):
         
-        ga1.played_this_round=["Anna","Claus","Doris"]
-        ga1.round=13
-        self.assertEqual(ga1.round,14,msg="Runde wurde nicht hochgesetzt")
-        ga1.played_this_round=["Anna","Claus"]
-        ga1.round=13
-        self.assertEqual(ga1.round,13,msg="Runde wurde falsch hochgesetzt")
-        ga1.played_this_round=["Anna","Claus","Doris"]
-        ga1.round=15
-        self.assertEqual(ga1.round,15,msg="Runde wurde trotzt Spielende hochgesetzt")
+        ga1.played_this_round = ["Anna", "Claus", "Doris"]
+        ga1.round = 13
+        self.assertEqual(ga1.round,14, msg = "Runde wurde nicht hochgesetzt")
+        ga1.played_this_round = ["Anna","Claus"]
+        ga1.round = 13
+        self.assertEqual(ga1.round, 13, msg = "Runde wurde falsch hochgesetzt")
+        ga1.played_this_round = ["Anna","Claus","Doris"]
+        ga1.round = 15
+        self.assertEqual(ga1.round, 15, msg = "Runde wurde trotzt Spielende hochgesetzt")
         
         
     def test_choose_cat(self):
@@ -252,5 +252,5 @@ class GameTest(unittest.TestCase):
         
         
     def test_players_left(self):
-        ga1.played_this_round=["Anna"]
-        self.assertEqual(ga1.players_left(),["Claus","Doris"],msg="Fehler in Liste verbleibender Spieler")        
+        ga1.played_this_round = ["Anna"]
+        self.assertEqual(ga1.players_left(), ["Claus","Doris"], msg = "Fehler in Liste verbleibender Spieler")        
