@@ -19,8 +19,6 @@ class DiceWidget(QWidget):
     
     def __init__(self, parent=None):
         super().__init__(parent)   
-        # generate mouse move events (see below)
-        #self.setMouseTracking(True)
         
         self.dice_width = self.width() / 9
         
@@ -54,34 +52,38 @@ class DiceWidget(QWidget):
         
         
         for i in range (0,len(self.newRoll.free_dice)):
+            y1 = 2 * self.height() / 3 - (self.dice_width/2)
+            x1 = self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2)
             if self.newRoll.free_dice[i] == 1:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.eins)
+                painter.drawPixmap(x1, y1, self.eins)
             elif self.newRoll.free_dice[i] == 2:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.zwei)
+                painter.drawPixmap(x1, y1, self.zwei)
             elif self.newRoll.free_dice[i] == 3:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.drei)
+                painter.drawPixmap(x1, y1, self.drei)
             elif self.newRoll.free_dice[i] == 4:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.vier)
+                painter.drawPixmap(x1, y1, self.vier)
             elif self.newRoll.free_dice[i] == 5:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.fuenf)
+                painter.drawPixmap(x1, y1, self.fuenf)
             elif self.newRoll.free_dice[i] == 6:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) - (self.dice_width/2), 2 * self.height() / 3 - (self.dice_width/2), self.sechs)
+                painter.drawPixmap(x1, y1, self.sechs)
             else:
                 print("Somethings wrong")
           
         for i in range (0,len(self.newRoll.picked_dice)):
+            x2 = self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2)
+            y2 = self.height() / 3 - (self.dice_width/2)
             if self.newRoll.picked_dice[i] == 1:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.eins)
+                painter.drawPixmap(x2, y2, self.eins)
             elif self.newRoll.picked_dice[i] == 2:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.zwei)
+                painter.drawPixmap(x2, y2, self.zwei)
             elif self.newRoll.picked_dice[i] == 3:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.drei)
+                painter.drawPixmap(x2, y2, self.drei)
             elif self.newRoll.picked_dice[i] == 4:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.vier)
+                painter.drawPixmap(x2, y2, self.vier)
             elif self.newRoll.picked_dice[i] == 5:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.fuenf)
+                painter.drawPixmap(x2, y2, self.fuenf)
             elif self.newRoll.picked_dice[i] == 6:
-                painter.drawPixmap(self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2), self.height() / 3 - (self.dice_width/2), self.sechs)
+                painter.drawPixmap(x2, y2, self.sechs)
             else:
                 print("Somethings wrong")
                 
@@ -97,21 +99,29 @@ class DiceWidget(QWidget):
     
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
-            if event.y() >  2 * self.height() / 3 - (self.dice_width/2) and event.y() <  2 * self.height() / 3 + (self.dice_width/2):
-                self.newRoll.pick(self.posToIndex(event.pos()))
-            elif event.y() > self.height() / 3 - (self.dice_width/2) and event.y() < self.height() / 3 + (self.dice_width/2):
-                self.newRoll.remove(self.posToIndex(event.pos()))
-            else:
-                pass
-            self.update()
+            index = self.posToIndex(event.pos())
+            if index != -1:
+                if event.y() >  2 * self.height() / 3 - (self.dice_width/2) and event.y() <  2 * self.height() / 3 + (self.dice_width/2):
+                    self.newRoll.pick(index)
+                elif event.y() > self.height() / 3 - (self.dice_width/2) and event.y() < self.height() / 3 + (self.dice_width/2):
+                    self.newRoll.remove(index)
+                else:
+                    pass
+                self.update()
             
     def posToIndex(self, pos):
         if pos.y() > self.height()/2:
-            x = self.width() // pos.x()
-            return x
+            for i in range (0,len(self.newRoll.free_dice)):
+                x1 = self.width() * ((i+1) / (len(self.newRoll.free_dice)+1)) #- (self.dice_width/2)
+                if abs(pos.x() - x1) <= self.dice_width/2:
+                    return i
+            return -1
         else:
-            x = self.width() // pos.x()
-            return x
+            for i in range (0,len(self.newRoll.picked_dice)):
+                x1 = self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) #- (self.dice_width/2)
+                if abs(pos.x() - x1) <= self.dice_width/2:
+                    return i
+            return -1
 
             
         
