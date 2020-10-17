@@ -38,7 +38,15 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
             for player in self.game.players:
                 self.Playerlist.insertItem(-1, player.name)
         else: #übrige Speiler dieser Runde
-            pass
+            for player in self.game.players_left():
+                self.Playerlist.insertItem(-1, player.name)
+            
+    def update_labels(self):
+        player = self.game.player_from_name(self.Playerlist.currentItem().text())
+        for key in Player.Player.keys:
+            getattr(self, "Label{}".format(key)).setText(str(player.points[key]))
+        self.LabelTotalScore.setText(str(player.score()+42))
+        self.LabelBonus.setText(str(player.got_35p * 35))
     
     def start_game(self):
         self.CreateNewPlayer.disable()
@@ -47,22 +55,19 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
     
     def play_round(self):
         name = self.Playerlist.currentItem().text()
-        self.game.play_round()
-                
-            
-    def update_labels(self):
-        player = self.game.player_from_name(self.Playerlist.currentItem().text())
-        for key in Player.Player.keys:
-            getattr(self, "Label{}".format(key)).setText(str(player.points[key]))
-        self.LabelTotalScore.setText(str(player.score()+42))
-        self.LabelBonus.setText(str(player.got_35p * 35))
+        self.game.play_round(name)
+        self.DiceWidget.newRoll = self.game.diceroll
+        self.Playerlist.disable()
         
     def cat_button_clicked(self):
         if self.game.currently_playing:
-            cat = self.sender().objectName()[5:]
+            cat = self.sender().objectName()[6:]
+            print(cat)
             self.game.chooseCat(cat)
             self.sender.disable()
             self.update_labels()
+            self.Playerlist.enable()
+            self.updatePlayerlist()
             
     def reset():
         pass

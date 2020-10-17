@@ -50,16 +50,17 @@ class Game:
             self.current_player_ind = index
             self.currently_playing = True
             self.diceroll = DiceRoll.DiceRoll()
+            self.played_this_round.append(self.players[self.current_player_ind])
             return 1
         else:
             return 0
     
-    def roll(self):
-        if self.diceroll.rolls_left() and self.currently_playing:
-            self.diceroll.roll()
-            return 1
-        else:
-            return 0
+    # def roll(self):
+    #     if self.diceroll.rolls_left() and self.currently_playing:
+    #         self.diceroll.roll()
+    #         return 1
+    #     else:
+    #         return 0
         
         
     def chooseCat(self, key):  ## key aus Player.keys
