@@ -1450,22 +1450,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>Play</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>update_score_list()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1375</x>
-     <y>239</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1371</x>
-     <y>261</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>StartGame</sender>
    <signal>clicked()</signal>
    <receiver>Form</receiver>

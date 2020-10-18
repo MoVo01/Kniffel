@@ -20,8 +20,10 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
         self.DiceRoll.setVisible(False)
-        self.Play.setEnabled(False)
-        print(self.DiceWidget.width()/11)
+        self.Play.setEnabled(False) 
+        print(self.DiceWidget.width())
+        print(self.DiceWidget.width()/9)
+        print(self.DiceWidget.dice_width)
         self.game = Game.Game()
         
     def create_new_player(self):
