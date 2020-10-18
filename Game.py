@@ -47,7 +47,7 @@ class Game:
     def play_round(self, name):
         index = self.nameindex(name)
         if self.players[index] not in self.played_this_round and not self.currently_playing:
-            print("play_round if")
+            #print("play_round if")
             self.current_player_ind = index
             self.currently_playing = True
             self.diceroll = DiceRoll.DiceRoll()       

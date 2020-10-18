@@ -7,7 +7,7 @@ Created on Thu Sep 17 21:56:15 2020
 
 
 import sys
-from PyQt5 import QtCore, QtWidgets, uic
+from PyQt5 import QtCore, QtWidgets, uic, Qt
 import Game, Player
 
 
@@ -65,17 +65,17 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
     
     def play(self):
         name = self.Playerlist.currentItem().text()
-        print(name)
+        #print(name)
         self.game.play_round(name)
-        print(self.game.diceroll.all_dice())
+        #print(self.game.diceroll.all_dice())
         self.DiceWidget.set_Roll(self.game.diceroll)
-        print(self.DiceWidget.newRoll.all_dice())
+        #print(self.DiceWidget.newRoll.all_dice())
         self.Playerlist.setEnabled(False)
         
     def cat_button_clicked(self):
         if self.game.currently_playing:
             cat = self.sender().objectName()[6:]
-            print(cat)
+            #print(cat)
             self.game.chooseCat(cat)
             #self.sender().setEnabled(False)
             self.Playerlist.setEnabled(True)
@@ -97,6 +97,25 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.updatePlayerlist()
         self.update_labels()
         self.update_buttons()
+        self.ScoreComparison.setRowCount(0)
+        
+    def create_score_list(self):
+        self.ScoreComparison.setRowCount(len(self.game.players))
+        i = 0
+        for player in self.game.players:
+            #print(player.name)
+            self.ScoreComparison.setItem(i, 0, QtWidgets.QTableWidgetItem(player.name))
+            self.ScoreComparison.setItem(i, 1, QtWidgets.QTableWidgetItem("0"))
+            i += 1
+        
+    def update_score_list(self):
+        i = 0  
+        for player in self.game.players:
+            print(str(player.score()))
+            self.ScoreComparison.setItem(i, 1, QtWidgets.QTableWidgetItem(str(player.score())))
+            i += 1
+        self.ScoreComparison.sortItems(1, 1)
+              
         
         
         
