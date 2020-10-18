@@ -112,14 +112,15 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
             self.ScoreComparison.setItem(i, 0, QtWidgets.QTableWidgetItem(player.name))
             self.ScoreComparison.setItem(i, 1, QtWidgets.QTableWidgetItem("0"))
             i += 1
+        self.Turn.setText("Turn: {}".format(self.game.round))
         
     def update_score_list(self):
         i = 0  
         for player in self.game.players:
-            print(str(player.score()))
             self.ScoreComparison.setItem(i, 1, QtWidgets.QTableWidgetItem(str(player.score())))
             i += 1
         self.ScoreComparison.sortItems(1, 1)
+        self.Turn.setText("Turn: {}".format(self.game.round))
               
         
            

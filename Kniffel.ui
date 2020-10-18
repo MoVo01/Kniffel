@@ -62,7 +62,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>280</width>
            <height>200</height>
           </size>
          </property>
@@ -76,6 +76,16 @@
            <string>Score</string>
           </property>
          </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="Turn">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
        </item>
       </layout>
@@ -144,7 +154,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>16777215</width>
+         <width>280</width>
          <height>200</height>
         </size>
        </property>
@@ -156,7 +166,7 @@
         <widget class="QPushButton" name="CreateNewPlayer">
          <property name="maximumSize">
           <size>
-           <width>185</width>
+           <width>190</width>
            <height>16777215</height>
           </size>
          </property>
@@ -169,7 +179,7 @@
         <widget class="QLineEdit" name="NameIn">
          <property name="maximumSize">
           <size>
-           <width>185</width>
+           <width>190</width>
            <height>16777215</height>
           </size>
          </property>
@@ -179,7 +189,7 @@
         <widget class="QPushButton" name="RemovePlayer">
          <property name="maximumSize">
           <size>
-           <width>185</width>
+           <width>190</width>
            <height>16777215</height>
           </size>
          </property>
@@ -192,7 +202,7 @@
         <widget class="QPushButton" name="Reset">
          <property name="maximumSize">
           <size>
-           <width>185</width>
+           <width>190</width>
            <height>16777215</height>
           </size>
          </property>
@@ -221,7 +231,7 @@
         <widget class="QPushButton" name="StartGame">
          <property name="maximumSize">
           <size>
-           <width>185</width>
+           <width>190</width>
            <height>16777215</height>
           </size>
          </property>
@@ -234,7 +244,7 @@
         <widget class="QPushButton" name="Play">
          <property name="maximumSize">
           <size>
-           <width>185</width>
+           <width>190</width>
            <height>16777215</height>
           </size>
          </property>

@@ -94,7 +94,6 @@ class DiceWidget(QWidget):
        
     def roll(self):
         if self.newRoll.roll():
-            self.RollSignal.emit()
             self.statusUpdated.emit("rolls remaining: {}".format(self.newRoll.rolls_left()))
             self.update()    
         else:
