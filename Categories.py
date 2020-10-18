@@ -8,7 +8,7 @@ Created on Wed Aug 12 16:39:14 2020
 class Categories:
     
     def __init__(self, dice):
-        self.dice = dice #Liste mit Würfelzahlen [1,2,3,4,5]
+        self.dice = dice # Liste mit Würfelzahlen [1,2,3,4,5]
         
     def simple(self, num):
         return self.dice.count(num)*num
@@ -113,11 +113,4 @@ class Categories:
     
     def points_from_key(self, key):
         dic = self.keydict([key])
-        return dic[key]
-                
-    
-    
-        
-
-        
-        
+        return dic[key]   

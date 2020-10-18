@@ -15,6 +15,7 @@ import Categories as f_ca
 import Game as f_ga
 import Player as f_pl
 
+
 class DiceRollTest(unittest.TestCase):
     
     def test_roll(self):
@@ -345,22 +346,12 @@ if __name__ == "__main__":
     
     suite1 = unittest.defaultTestLoader.loadTestsFromTestCase(DiceRollTest)
     res1 = unittest.TextTestRunner(resultclass = unittest.TextTestResult).run(suite1)
-    ## RollError wird in test logischerweise gecalled, was zu einem Fehlschlag führt
-    
     
     suite2 = unittest.defaultTestLoader.loadTestsFromTestCase(CategoriesTest)
     res2 = unittest.TextTestRunner(resultclass = unittest.TextTestResult).run(suite2)
-    
     
     suite3 = unittest.defaultTestLoader.loadTestsFromTestCase(GameTest)
     res3 = unittest.TextTestRunner(resultclass = unittest.TextTestResult).run(suite3)
     
     suite4 = unittest.defaultTestLoader.loadTestsFromTestCase(PlayerTest)
     res4 = unittest.TextTestRunner(resultclass = unittest.TextTestResult).run(suite4)
-    
-    
-    
-    
-    
-    
-    

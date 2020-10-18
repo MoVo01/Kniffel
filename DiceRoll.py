@@ -36,4 +36,3 @@ class DiceRoll:
     
     def rolls_left(self):
         return 3 - self.count
-        

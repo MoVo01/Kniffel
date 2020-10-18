@@ -8,15 +8,14 @@ Created on Thu Sep 17 21:55:27 2020
 
 import os
 from DiceRoll import DiceRoll
+from PyQt5 import QtCore
 from PyQt5.Qt import Qt
 from PyQt5.QtGui import QPainter, QPixmap
 from PyQt5.QtWidgets import QWidget, QApplication
-from Categories import Categories
 
 class DiceWidget(QWidget):
     
     statusUpdated = QtCore.pyqtSignal(str)
-    RollSignal = QtCore.pyqtSignal()
     
     def __init__(self, parent=None):
         super().__init__(parent)   
@@ -24,9 +23,8 @@ class DiceWidget(QWidget):
         self.dice_width = 0
         self.newRoll = None
         self.set_dicewidth()
-        
-        
-    def set_dicewidth(self, width = 21):
+                
+    def set_dicewidth(self, width = 42):
         
         self.dice_width = width
         
@@ -36,7 +34,6 @@ class DiceWidget(QWidget):
         Vier = QPixmap(os.path.join("Würfel", "Vier"))
         Fuenf = QPixmap(os.path.join("Würfel", "Fünf"))
         Sechs = QPixmap(os.path.join("Würfel", "Sechs"))
-        
         
         self.eins = Eins.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.zwei = Zwei.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
@@ -77,8 +74,6 @@ class DiceWidget(QWidget):
                     painter.drawPixmap(x1, y1, self.fuenf)
                 elif self.newRoll.free_dice[i] == 6:
                     painter.drawPixmap(x1, y1, self.sechs)
-                else:
-                    print("Somethings wrong")
               
             for i in range (0,len(self.newRoll.picked_dice)):
                 x2 = self.width() * ((i+1) / (len(self.newRoll.picked_dice)+1)) - (self.dice_width/2)
@@ -95,11 +90,8 @@ class DiceWidget(QWidget):
                     painter.drawPixmap(x2, y2, self.fuenf)
                 elif self.newRoll.picked_dice[i] == 6:
                     painter.drawPixmap(x2, y2, self.sechs)
-                else:
-                    print("Somethings wrong")
                 
-      
-        
+       
     def roll(self):
         if self.newRoll.roll():
             self.RollSignal.emit()
@@ -108,8 +100,7 @@ class DiceWidget(QWidget):
         else:
             text = "You dont have any rolls left!!!"
             self.statusUpdated.emit(text)
-            
-    
+                
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             index = self.posToIndex(event.pos())
@@ -118,11 +109,8 @@ class DiceWidget(QWidget):
                     self.newRoll.pick(index)
                 elif event.y() > self.height() / 3 - (self.dice_width/2) and event.y() < self.height() / 3 + (self.dice_width/2):
                     self.newRoll.remove(index)
-                else:
-                    pass
                 self.update()
-                
-            
+                            
     def posToIndex(self, pos):
         if pos.y() > self.height()/2:
             for i in range (0,len(self.newRoll.free_dice)):
@@ -151,4 +139,3 @@ if __name__ == "__main__":
     dice.set_Roll(DiceRoll())
     dice.show()
     sys.exit(app.exec_())
-

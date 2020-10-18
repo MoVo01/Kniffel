@@ -21,6 +21,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.setupUi(self)
         self.DiceRoll.setVisible(False)
         self.Play.setEnabled(False) 
+        self.StartGame.setEnabled(False)
         self.DiceWidget.set_dicewidth(self.DiceWidget.width() / 9)
         self.game = Game.Game()
         
@@ -29,6 +30,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
             self.game.check_in(str(self.NameIn.text()))
             self.updatePlayerlist()
             self.NameIn.clear()
+            self.StartGame.setEnabled(True)
             
     def remove_player(self):
         self.game.check_out(self.Playerlist.currentItem().text())
@@ -68,11 +70,8 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
     
     def play(self):
         name = self.Playerlist.currentItem().text()
-        #print(name)
         self.game.play_round(name)
-        #print(self.game.diceroll.all_dice())
         self.DiceWidget.set_Roll(self.game.diceroll)
-        #print(self.DiceWidget.newRoll.all_dice())
         self.Playerlist.setEnabled(False)
         self.Play.setEnabled(False)
         self.DiceRoll.setVisible(True)
@@ -80,9 +79,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
     def cat_button_clicked(self):
         if self.game.currently_playing:
             cat = self.sender().objectName()[6:]
-            #print(cat)
             self.game.chooseCat(cat)
-            #self.sender().setEnabled(False)
             self.DiceRoll.setVisible(False)
             self.Play.setEnabled(True)
             self.Playerlist.setEnabled(True)
@@ -112,7 +109,6 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.ScoreComparison.setRowCount(len(self.game.players))
         i = 0
         for player in self.game.players:
-            #print(player.name)
             self.ScoreComparison.setItem(i, 0, QtWidgets.QTableWidgetItem(player.name))
             self.ScoreComparison.setItem(i, 1, QtWidgets.QTableWidgetItem("0"))
             i += 1
@@ -126,11 +122,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.ScoreComparison.sortItems(1, 1)
               
         
-        
-        
-        
-        
-    
+           
 if __name__ == "__main__":
     if QtCore.QCoreApplication.instance() is not None:
         app = QtCore.QCoreApplication.instance()

@@ -47,7 +47,6 @@ class Game:
     def play_round(self, name):
         index = self.nameindex(name)
         if self.players[index] not in self.played_this_round and not self.currently_playing:
-            #print("play_round if")
             self.current_player_ind = index
             self.currently_playing = True
             self.diceroll = DiceRoll.DiceRoll()       
@@ -61,9 +60,8 @@ class Game:
             return 1
         else:
             return 0
-        
-        
-    def chooseCat(self, key):  ## key aus Player.keys
+                
+    def chooseCat(self, key):
         player = self.players[self.current_player_ind]
         if key in player.unused_cat():
             cat = Categories.Categories(self.diceroll.all_dice())
@@ -74,13 +72,10 @@ class Game:
             self.played_this_round.append(player)
             if len(self.players) == len(self.played_this_round):
                 self.next_round()     
-        
-    
+            
     def players_left(self):
         left = []
         for player in self.players:
             if player not in self.played_this_round:
                 left.append(player)
         return left
-        
-  
