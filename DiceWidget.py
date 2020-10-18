@@ -27,7 +27,7 @@ class DiceWidget(QWidget):
         self.set_dicewidth()
         
         
-    def set_dicewidth(self, width = self.width/9):
+    def set_dicewidth(self, width = 21):
         
         self.dice_width = width
         
