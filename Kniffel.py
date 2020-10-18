@@ -67,14 +67,21 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.StartGame.setEnabled(False)
         self.Play.setEnabled(True)
         self.game.next_round()  
+        self.Turn.setText("Turn: {}".format(self.game.round))
     
     def play(self):
-        name = self.Playerlist.currentItem().text()
-        self.game.play_round(name)
-        self.DiceWidget.set_Roll(self.game.diceroll)
-        self.Playerlist.setEnabled(False)
-        self.Play.setEnabled(False)
-        self.DiceRoll.setVisible(True)
+        if self.game.round == 15 and not self.game.players_left():
+            self.Play.setEnabled(False)
+            self.game.played_this_round = []
+            self.updatePlayerlist()
+        elif self.game.round <= 15:
+            name = self.Playerlist.currentItem().text()
+            self.game.play_round(name)
+            self.DiceWidget.set_Roll(self.game.diceroll)
+            self.Playerlist.setEnabled(False)
+            self.Play.setEnabled(False)
+            self.DiceRoll.setVisible(True)
+            
         
     def cat_button_clicked(self):
         if self.game.currently_playing:
@@ -99,6 +106,8 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.RemovePlayer.setEnabled(True)
         self.NameIn.setEnabled(True)
         self.StartGame.setEnabled(True)
+        self.Play.setEnabled(True)
+        self.Turn.setText("")
         self.updatePlayerlist()
         self.update_labels()
         self.update_buttons()
@@ -112,14 +121,14 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
             self.ScoreComparison.setItem(i, 0, QtWidgets.QTableWidgetItem(player.name))
             self.ScoreComparison.setItem(i, 1, QtWidgets.QTableWidgetItem("0"))
             i += 1
-        self.Turn.setText("Turn: {}".format(self.game.round))
         
     def update_score_list(self):
         i = 0  
+        self.game.players.sort(key = lambda x: x.score(), reverse = True)
         for player in self.game.players:
             self.ScoreComparison.setItem(i, 1, QtWidgets.QTableWidgetItem(str(player.score())))
             i += 1
-        self.ScoreComparison.sortItems(1, 1)
+        #self.ScoreComparison.sortItems(1, 1)
         self.Turn.setText("Turn: {}".format(self.game.round))
               
         

@@ -37,7 +37,7 @@ class Game:
         
     def next_round(self):
         self.game_running = True
-        if len(self.played_this_round) == len(self.players) and self.round < 15:
+        if self.round == 0 or len(self.played_this_round) == len(self.players) and self.round < 15:
             self.round += 1
             self.played_this_round = []
             return 1
