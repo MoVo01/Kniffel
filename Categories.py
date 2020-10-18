@@ -5,8 +5,6 @@ Created on Wed Aug 12 16:39:14 2020
 @author: morit
 """
 
-import Player
-
 class Categories:
     
     def __init__(self, dice):
@@ -112,6 +110,10 @@ class Categories:
             elif key[1:7] == "ofKind" and 1 < int(key[0]) < 5:
                 dic[key] = self.xOfKind(int(key[0]))
         return dic
+    
+    def points_from_key(self, key):
+        dic = self.keydict([key])
+        return dic[key]
                 
     
     
