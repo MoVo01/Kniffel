@@ -19,6 +19,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         WindowBaseClass.__init__(self, parent)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
+        self.DiceRoll.setVisible(False)
         
         self.game = Game.Game()
         
@@ -69,8 +70,13 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.game.play_round(name)
         #print(self.game.diceroll.all_dice())
         self.DiceWidget.set_Roll(self.game.diceroll)
+<<<<<<< HEAD
         #print(self.DiceWidget.newRoll.all_dice())
+=======
+>>>>>>> 9f1bc4bc18897822b9b4dd14a7ce49a2e56f9581
         self.Playerlist.setEnabled(False)
+        self.Play.setEnabled(False)
+        self.DiceRoll.setVisible(True)
         
     def cat_button_clicked(self):
         if self.game.currently_playing:
@@ -78,6 +84,8 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
             #print(cat)
             self.game.chooseCat(cat)
             #self.sender().setEnabled(False)
+            self.DiceRoll.setVisible(False)
+            self.Play.setEnabled(True)
             self.Playerlist.setEnabled(True)
             self.update_labels()
             self.update_buttons()
