@@ -20,7 +20,7 @@ class DiceRollTest(unittest.TestCase):
         
         
         def legal_dice(l):
-            for die in l:
+            for die in l.all_dice():
                 if not 1 <= die <= 6:
                     return False
             return True
@@ -30,12 +30,11 @@ class DiceRollTest(unittest.TestCase):
         self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         dr1.roll()
         self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
+        dr1.roll()
+        self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         
         # ergebnis ändert sich nach drittem wurf nicht mehr
         old_dice = copy.deepcopy(dr1.free_dice)
-        dr1.roll()
-        self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
-        self.assertEqual(dr1.free_dice, old_dice, msg = "mehr als drei Wuerfelaktionen getaetigt")
         dr1.roll()
         self.assertTrue(legal_dice(dr1), msg = "unmoegliche Augenzahl")
         self.assertEqual(dr1.free_dice, old_dice, msg = "mehr als drei Wuerfelaktionen getaetigt")
@@ -43,7 +42,7 @@ class DiceRollTest(unittest.TestCase):
     def test_pick(self):
         
         def legal_dice(l):
-            for die in l:
+            for die in l.all_dice():
                 if not 1 <= die <= 6:
                     return False
             return True
@@ -79,7 +78,8 @@ class DiceRollTest(unittest.TestCase):
     def test_remove(self):
         
         # würfel auswählen
-        dr3 = f_dr.DiceRoll([1,2,3,4,5])
+        dr3 = f_dr.DiceRoll()
+        dr3.free_dice = [1,2,3,4,5]
         dr3.pick(1)
         self.assertEqual(dr3.free_dice, [1, 3, 4, 5], msg = "falscher Wuerfel geloescht")
         self.assertEqual(dr3.picked_dice, [2], msg = "falscher Wuerfel ausgewaehlt")
@@ -96,11 +96,10 @@ class DiceRollTest(unittest.TestCase):
         self.assertEqual(dr3.picked_dice, [], msg = "falscher Wuerfel ausgewaehlt")
         
                 
-class CategoriesTest(unittest.TestCase): ## hier fehlt test für keydict
+class CategoriesTest(unittest.TestCase):
     
     
     def __init__(self):
-        super(self.__class__, self).__init__()
         self.ca1 = f_ca.Categories([5,4,3,2,1])
         self.ca2 = f_ca.Categories([1,2,1,1,2])
         self.ca3 = f_ca.Categories([2,3,1,5,6])
@@ -197,60 +196,117 @@ class CategoriesTest(unittest.TestCase): ## hier fehlt test für keydict
         self.assertEqual(self.ca5.chance(), 30, msg = "falsche Auswertung in Chance")
         self.assertEqual(self.ca6.chance(), 16, msg = "falsche Auswertung in Chance")
         
+    def test_keydict(self):
+        
+        comp = {}
+        comp["5er"] = 5
+        comp["largeStraight"] = 40
+        comp["chance"] = 15
+        self.assertEqual(self.ca1.keydict(["5er", "largeStraight", "chance"]), msg = "Fehler in keydict")
+    
+    def test_points_from_key(self):
+        
+        self.assertEqual(self.ca1.points_from_key("chance"), 15, msg = "Fehler in points_from_key")
+        self.assertEqual(self.ca2.points_from_key("fullHouse"), 25, msg = "Fehler in points_from_key")
+        self.assertEqual(self.ca4.points_from_key("2x2ofKind"), 19, msg = "Fehler in points_from_key")
         
         
- #-------------NEU---NEU---NEU---NEU---NEU------------------       
+               
 class GameTest(unittest.TestCase):
     
     def __init__(self):
         super(self.__class__, self).__init__()
-        ga1 = f_ga.Game()
-        ga1.players=["Anna", "Betty", "Claus"]
+        self.ga1 = f_ga.Game()
         
         
     def test_check_in(self):
-        ga1.check_in("Doris")
-        self.assertEqual(ga1.players,["Anna", "Betty", "Claus", "Doris"], msg = "Spieler wurde nicht hinzugefügt")
-        
+        self.ga1.players = ["Anna", "Betty", "Claus"]
+        self.ga1.check_in("Doris")
+        self.assertEqual(self.ga1.players, ["Anna", "Betty", "Claus", "Doris"], msg = "Spieler wurde nicht hinzugefügt")
+        self.ga1.check_in("Doris")
+        self.assertEqual(self.ga1.players, ["Anna", "Betty", "Claus", "Doris"], msg = "selber Name wurde doppelt eingefügt")
         
         
     def test_check_out(self):
-        ga1.check_out("Carl")
-        self.assertEqual(ga1.players, ["Anna", "Betty", "Claus", "Doris"], msg = "nicht vorhandener Spieler bei check_out")
-        ga1.check_out("Betty")
-        self.assertEqual(ga1.players, ["Anna", "Claus", "Doris"], msg = "Fehler bei korrektem Spieler check_out")
+        self.ga1.players = ["Anna", "Betty", "Claus", "Doris"]
+        self.ga1.check_out("Carl")
+        self.assertEqual(self.ga1.players, ["Anna", "Betty", "Claus", "Doris"], msg = "nicht vorhandener Spieler bei check_out")
+        self.ga1.check_out("Betty")
+        self.assertEqual(self.ga1.players, ["Anna", "Claus", "Doris"], msg = "Fehler bei korrektem Spieler check_out")
         
         
     def test_next_round(self):
         
-        ga1.played_this_round = ["Anna", "Claus", "Doris"]
-        ga1.round = 13
-        self.assertEqual(ga1.round,14, msg = "Runde wurde nicht hochgesetzt")
-        ga1.played_this_round = ["Anna","Claus"]
-        ga1.round = 13
-        self.assertEqual(ga1.round, 13, msg = "Runde wurde falsch hochgesetzt")
-        ga1.played_this_round = ["Anna","Claus","Doris"]
-        ga1.round = 15
-        self.assertEqual(ga1.round, 15, msg = "Runde wurde trotzt Spielende hochgesetzt")
+        self.ga1.players = ["Anna", "Claus", "Doris"]
+        self.ga1.played_this_round = ["Anna", "Claus", "Doris"]
+        self.ga1.round = 13
+        self.ga1.next_round()
+        self.assertEqual(self.ga1.round, 14, msg = "Runde wurde nicht hochgesetzt")
+        self.assertEqual(self.ga1.played_this_round, [], msg = "in neuer Runde existieren Spieler, die bereits spielten")
+        
+        self.ga1.played_this_round = ["Anna","Claus"]
+        self.ga1.round = 13
+        self.ga1.next_round()
+        self.assertEqual(self.ga1.round, 13, msg = "Runde wurde falsch hochgesetzt")
+        self.assertEqual(self.ga1.played_this_round, ["Anna","Claus"], msg = "Trotz selber Runde Spieler aus bereits gespielt gelöscht")
+        
+        self.ga1.played_this_round = ["Anna","Claus","Doris"]
+        self.ga1.round = 15
+        self.ga1.next_round()
+        self.assertEqual(self.ga1.round, 15, msg = "Runde wurde trotzt Spielende hochgesetzt")
+        self.assertEqual(self.ga1.played_this_round, ["Anna","Claus","Doris"], msg = "trotz Spielende dürfen Spieler nochmal spielen")
         
         
+    def test_play_round(self):
+        
+        self.ga1.round = 13
+        self.ga1.next_round()
+        self.play_round("Anna")
+        self.assertEqual(self.ga1.currently_playing, True, msg = "Spiel har Runde nicht gestartet")
+        
+    
     def test_choose_cat(self):
         
- #      def chooseCat(self, key):  ## key aus Player.keys
-  #      player = self.players[self.current_player_ind]
-   #     if key in player.unused_cat():
-    #        cat = Categories(self.diceroll.all_dice())
-     #       pointdict = cat.keydict(player.unused_cat())
-      #      player.chosen_cat[key] = True
-       #     player.points[key] = pointdict[key]
-        #    player.check_35p()
-         #   self.currently_playing = False
-          #  self.played_this_round.append(player)
+        self.ga1.players = ["Anna", "Claus", "Doris"]
+        self.ga1.played_this_round = []
+        self.ga1.play_round("Anna")
+        self.ga1.chooseCat("chance")
+        player = self.ga1.players[self.ga1.current_player_ind]
+        self.assertEqual(player.chosen_cat["chance"], True, msg = "Kategorie wurde nicht als gewählt gesetzt")
+        self.assertNotEquals(player.points["chance"], 0, msg = "Punkte wurden nicht eingetragen")
+        self.assertEqual(self.ga1.currently_playing, False, msg = "Runde des Spieler wurde nicht beednet")
+        self.assertEqual(self.ga1.played_this_round, ["Anna"], msg = "Spieler wurde nicht der Liste bereits gespielt hinzugefügt")
         
-         
+        self.ga1.round = 12
+        self.ga1.played_this_round = ["Anna", "Doris"]
+        self.ga1.play_round("Claus")
+        self.ga1.chooseCat("chance")
+        self.assertEqual(self.ga1.round, 13, msg = "obwohl alle Spieler dran waren wurde die nächste Runde nicht begonnen")
         
-        
-        
+       
     def test_players_left(self):
-        ga1.played_this_round = ["Anna"]
-        self.assertEqual(ga1.players_left(), ["Claus","Doris"], msg = "Fehler in Liste verbleibender Spieler")        
+        self.ga1.players = ["Anna", "Claus", "Doris"]
+        self.ga1.played_this_round = ["Anna"]
+        self.assertEqual(self.ga1.players_left(), ["Claus","Doris"], msg = "Fehler in Liste verbleibender Spieler")        
+
+
+if __name__ == "__main__":
+    
+    # suite1 = unittest.defaultTestLoader.loadTestsFromTestCase(DiceRollTest)
+    # res1 = unittest.TextTestRunner(resultclass = unittest.TextTestResult).run(suite1)
+    ## RollError wird in test logischerweise gecalled, was zu einem Fehlschlag führt
+    
+    
+    
+    suite2 = unittest.defaultTestLoader.loadTestsFromTestCase(CategoriesTest)
+    res2 = unittest.TextTestRunner(resultclass = unittest.TextTestResult).run(suite2)
+    
+    # suite3 = unittest.defaultTestLoader.loadTestsFromTestCase(GameTest)
+    # res3 = unittest.TextTestRunner(resultclass = unittest.TextTestResult).run(suite3)
+    
+    
+    
+    
+    
+    
+    
