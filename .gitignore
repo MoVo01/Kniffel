@@ -16,3 +16,7 @@ __pycache__/Categories.cpython-37.pyc
 *.pyc
 __pycache__/DiceWidget.cpython-37.pyc
 *.pyc
+__pycache__/DiceRoll.cpython-37.pyc
+__pycache__/Categories.cpython-37.pyc
+__pycache__/DiceWidget.cpython-37.pyc
+__pycache__/Player.cpython-37.pyc
