@@ -22,8 +22,9 @@ class DiceRoll:
             for i in range(len(self.free_dice)):
                 self.free_dice[i] = random.randint(1,6)
             self.count += 1
+            return 1
         else:
-            raise RollError
+            return 0
             
     def pick(self, pos):
         self.picked_dice.append(self.free_dice[pos])

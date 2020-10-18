@@ -74,6 +74,7 @@ class DiceRollTest(unittest.TestCase):
         self.assertTrue(legal_dice(dr2), msg = "unmoegliche Augenzahl")
         self.assertEqual(dr2.free_dice, old_dice2, msg = "mehr als drei Wuerfelaktionen getaetigt")
         self.assertEqual(len(dr2.free_dice), len(old_dice), msg = "falsche Anzal Wuerfel erneut geworfen")
+
         
     def test_remove(self):
         
