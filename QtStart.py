@@ -90,6 +90,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
             self.update_buttons()
             self.updatePlayerlist()
             self.DiceWidget.set_Roll(None)
+            self.update_score_list()
             
     def list_player_selected(self):
         self.update_labels()
