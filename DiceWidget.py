@@ -143,8 +143,8 @@ if __name__ == "__main__":
     else:
         app = QApplication(sys.argv)
         
-    #dice = DiceWidget()
-    #dice.resize(800,600)
-    #dice.show()
-    #sys.exit(app.exec_())
+    dice = DiceWidget()
+    dice.resize(800,600)
+    dice.show()
+    sys.exit(app.exec_())
 
