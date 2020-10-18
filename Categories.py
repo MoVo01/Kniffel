@@ -5,8 +5,6 @@ Created on Wed Aug 12 16:39:14 2020
 @author: morit
 """
 
-import Player
-
 class Categories:
     
     def __init__(self, dice):
@@ -79,7 +77,7 @@ class Categories:
         def sublist(a, b):
             sub = True
             for val in a:
-                if a not in b:
+                if val not in b:
                     sub = False
                     break
             return sub
@@ -113,9 +111,8 @@ class Categories:
                 dic[key] = self.xOfKind(int(key[0]))
         return dic
                 
-    
-    
-        
+
+
 
         
         
