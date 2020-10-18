@@ -20,6 +20,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
         self.DiceRoll.setVisible(False)
+        self.Play.setEnabled(False)
         
         self.game = Game.Game()
         
@@ -62,6 +63,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.RemovePlayer.setEnabled(False)
         self.NameIn.setEnabled(False)
         self.StartGame.setEnabled(False)
+        self.Play.setEnabled(True)
         self.game.next_round()  
     
     def play(self):
