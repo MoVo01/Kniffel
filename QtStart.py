@@ -7,7 +7,7 @@ Created on Thu Sep 17 21:56:15 2020
 
 
 import sys
-from PyQt5 import QtCore, QtWidgets, uic, Qt
+from PyQt5 import QtCore, QtWidgets, uic
 import Game, Player
 
 
