@@ -25,7 +25,7 @@
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>15</x>
+      <x>10</x>
       <y>10</y>
       <width>251</width>
       <height>194</height>
@@ -793,7 +793,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Yahtzee</string>
+            <string>Kniffel</string>
            </property>
           </widget>
          </item>
