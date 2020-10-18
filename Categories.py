@@ -77,7 +77,7 @@ class Categories:
         def sublist(a, b):
             sub = True
             for val in a:
-                if a not in b:
+                if val not in b:
                     sub = False
                     break
             return sub

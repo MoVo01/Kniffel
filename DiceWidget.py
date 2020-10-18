@@ -135,15 +135,16 @@ class DiceWidget(QWidget):
 
             
         
-# if __name__ == "__main__":
-#     import sys
-#     if QtCore.QCoreApplication.instance() is not None:
-#         app = QtCore.QCoreApplication.instance()
-#     else:
-#         app = QApplication(sys.argv)
+if __name__ == "__main__":
+    import sys
+    if QtCore.QCoreApplication.instance() is not None:
+        app = QtCore.QCoreApplication.instance()
+    else:
+        app = QApplication(sys.argv)
         
-    #dice = DiceWidget()
-    #dice.resize(800,600)
-    #dice.show()
-    #sys.exit(app.exec_())
+    dice = DiceWidget()
+    dice.resize(800,600)
+    dice.set_Roll(DiceRoll())
+    dice.show()
+    sys.exit(app.exec_())
 
