@@ -70,7 +70,6 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.game.play_round(name)
         print(self.game.diceroll.all_dice())
         self.DiceWidget.set_Roll(self.game.diceroll)
-        print(self.DiceWidget.newRoll.all_dice())
         self.Playerlist.setEnabled(False)
         self.Play.setEnabled(False)
         self.DiceRoll.setVisible(True)
