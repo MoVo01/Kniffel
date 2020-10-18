@@ -13,6 +13,7 @@ import copy
 import DiceRoll as f_dr
 import Categories as f_ca
 import Game as f_ga
+import Player
 
 class DiceRollTest(unittest.TestCase):
     
