@@ -198,14 +198,21 @@ class CategoriesTest(unittest.TestCase): ## hier fehlt test für keydict und poi
         self.assertEqual(self.ca6.chance(), 16, msg = "falsche Auswertung in Chance")
         
     def test_keydict(self):
-        pass
+        
+        comp = {}
+        comp["5er"] = 5
+        comp["largeStraight"] = 40
+        comp["chance"] = 15
+        self.assertEqual(self.ca1.keydict(["5er", "largeStraight", "chance"]), msg = "Fehler in keydict")
     
     def test_points_from_key(self):
-        pass
+        
+        self.assertEqual(self.ca1.points_from_key("chance"), 15, msg = "Fehler in points_from_key")
+        self.assertEqual(self.ca2.points_from_key("fullHouse"), 25, msg = "Fehler in points_from_key")
+        self.assertEqual(self.ca4.points_from_key("2x2ofKind"), 19, msg = "Fehler in points_from_key")
         
         
-        
- #-------------NEU---NEU---NEU---NEU---NEU------------------       
+               
 class GameTest(unittest.TestCase):
     
     def __init__(self):
@@ -214,16 +221,15 @@ class GameTest(unittest.TestCase):
         
         
     def test_check_in(self):
-        self.ga1.players=["Anna", "Betty", "Claus"]
+        self.ga1.players = ["Anna", "Betty", "Claus"]
         self.ga1.check_in("Doris")
         self.assertEqual(self.ga1.players, ["Anna", "Betty", "Claus", "Doris"], msg = "Spieler wurde nicht hinzugefügt")
         self.ga1.check_in("Doris")
         self.assertEqual(self.ga1.players, ["Anna", "Betty", "Claus", "Doris"], msg = "selber Name wurde doppelt eingefügt")
         
         
-        
     def test_check_out(self):
-        self.ga1.players=["Anna", "Betty", "Claus", "Doris"]
+        self.ga1.players = ["Anna", "Betty", "Claus", "Doris"]
         self.ga1.check_out("Carl")
         self.assertEqual(self.ga1.players, ["Anna", "Betty", "Claus", "Doris"], msg = "nicht vorhandener Spieler bei check_out")
         self.ga1.check_out("Betty")
@@ -232,7 +238,7 @@ class GameTest(unittest.TestCase):
         
     def test_next_round(self):
         
-        self.ga1.players=["Anna", "Claus", "Doris"]
+        self.ga1.players = ["Anna", "Claus", "Doris"]
         self.ga1.played_this_round = ["Anna", "Claus", "Doris"]
         self.ga1.round = 13
         self.ga1.next_round()
@@ -261,12 +267,25 @@ class GameTest(unittest.TestCase):
         
     
     def test_choose_cat(self):
-        pass
         
-         
+        self.ga1.players = ["Anna", "Claus", "Doris"]
+        self.ga1.played_this_round = []
+        self.ga1.play_round("Anna")
+        self.ga1.chooseCat("chance")
+        player = self.ga1.players[self.ga1.current_player_ind]
+        self.assertEqual(player.chosen_cat["chance"], True, msg = "Kategorie wurde nicht als gewählt gesetzt")
+        self.assertNotEquals(player.points["chance"], 0, msg = "Punkte wurden nicht eingetragen")
+        self.assertEqual(self.ga1.currently_playing, False, msg = "Runde des Spieler wurde nicht beednet")
+        self.assertEqual(self.ga1.played_this_round, ["Anna"], msg = "Spieler wurde nicht der Liste bereits gespielt hinzugefügt")
         
+        self.ga1.round = 12
+        self.ga1.played_this_round = ["Anna", "Doris"]
+        self.ga1.play_round("Claus")
+        self.ga1.chooseCat("chance")
+        self.assertEqual(self.ga1.round, 13, msg = "obwohl alle Spieler dran waren wurde die nächste Runde nicht begonnen")
         
-        
+       
     def test_players_left(self):
+        self.ga1.players = ["Anna", "Claus", "Doris"]
         self.ga1.played_this_round = ["Anna"]
         self.assertEqual(self.ga1.players_left(), ["Claus","Doris"], msg = "Fehler in Liste verbleibender Spieler")        
