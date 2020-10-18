@@ -12,7 +12,7 @@ import Game, Player
 
 
 
-Ui_MainWindow, WindowBaseClass = uic.loadUiType("GUI.ui")
+Ui_MainWindow, WindowBaseClass = uic.loadUiType("Kniffel.ui")
 
 class MyDialog(WindowBaseClass, Ui_MainWindow):
     def __init__(self, parent = None):
