@@ -35,6 +35,9 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetFixedSize</enum>
+     </property>
      <property name="leftMargin">
       <number>5</number>
      </property>
@@ -151,16 +154,35 @@
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QPushButton" name="CreateNewPlayer">
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Create New Player</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="NameIn"/>
+        <widget class="QLineEdit" name="NameIn">
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="RemovePlayer">
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Remove Player</string>
          </property>
@@ -168,6 +190,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="Reset">
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Reset</string>
          </property>
@@ -191,6 +219,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="StartGame">
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Start Game</string>
          </property>
@@ -198,6 +232,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="Play">
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Play</string>
          </property>
@@ -224,7 +264,7 @@
      <item>
       <widget class="DiceWidget" name="DiceWidget" native="true">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
