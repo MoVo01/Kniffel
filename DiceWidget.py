@@ -7,8 +7,7 @@ Created on Thu Sep 17 21:55:27 2020
 
 
 import os
-from DiceRoll import DiceRoll, RollError
-from PyQt5 import QtCore
+from DiceRoll import DiceRoll
 from PyQt5.Qt import Qt
 from PyQt5.QtGui import QPainter, QPixmap
 from PyQt5.QtWidgets import QWidget, QApplication
