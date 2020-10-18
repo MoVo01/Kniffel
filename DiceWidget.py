@@ -22,7 +22,14 @@ class DiceWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)   
         
-        self.dice_width = self.width() / 9
+        self.dice_width = 0
+        self.newRoll = None
+        self.set_dicewidth()
+        
+        
+    def set_dicewidth(self, width = self.width/9):
+        
+        self.dice_width = width
         
         Eins = QPixmap(os.path.join("Würfel", "Eins"))
         Zwei = QPixmap(os.path.join("Würfel", "Zwei"))
@@ -38,7 +45,6 @@ class DiceWidget(QWidget):
         self.vier = Vier.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.fuenf = Fuenf.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
         self.sechs = Sechs.scaledToWidth(self.dice_width, Qt.SmoothTransformation)
-        self.newRoll = None
         
     def set_Roll(self, dr):
         self.newRoll = dr

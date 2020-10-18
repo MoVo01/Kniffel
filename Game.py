@@ -19,7 +19,7 @@ class Game:
         self.diceroll = None
         
     def check_in(self, name):
-        if not self.game_running and not name in filter(lambda x: x.name == name, self.players):
+        if not self.game_running and not name in (player.name for player in self.players):
             self.players.append(Player.Player(name))
             
     def check_out(self, name):

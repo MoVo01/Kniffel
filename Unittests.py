@@ -286,14 +286,19 @@ class CategoriesTest(unittest.TestCase):
                
 class GameTest(unittest.TestCase):
         
+    Anna = Player.Player("Anna")
+    Betty = Player.Player("Betty")
+    Claus = Player.Player("Claus")
+    Doris = Player.Player("Doris")
+    
         
     def test_check_in(self):
         game = f_ga.Game()
         game.players = ["Anna", "Betty", "Claus"]
         game.check_in("Doris")
-        self.assertEqual(game.players, ["Anna", "Betty", "Claus", "Doris"], msg = "Spieler wurde nicht hinzugefügt")
+        self.assertEqual(len(game.players), 4, msg = "Spieler wurde nicht hinzugefügt")
         game.check_in("Doris")
-        self.assertEqual(game.players, ["Anna", "Betty", "Claus", "Doris"], msg = "selber Name wurde doppelt eingefügt")
+        self.assertEqual(len(game.players), 4, msg = "selber Name wurde doppelt eingefügt")
         
         
     def test_check_out(self):
