@@ -156,7 +156,7 @@
         <widget class="QPushButton" name="CreateNewPlayer">
          <property name="maximumSize">
           <size>
-           <width>180</width>
+           <width>185</width>
            <height>16777215</height>
           </size>
          </property>
@@ -169,7 +169,7 @@
         <widget class="QLineEdit" name="NameIn">
          <property name="maximumSize">
           <size>
-           <width>180</width>
+           <width>185</width>
            <height>16777215</height>
           </size>
          </property>
@@ -179,7 +179,7 @@
         <widget class="QPushButton" name="RemovePlayer">
          <property name="maximumSize">
           <size>
-           <width>180</width>
+           <width>185</width>
            <height>16777215</height>
           </size>
          </property>
@@ -192,7 +192,7 @@
         <widget class="QPushButton" name="Reset">
          <property name="maximumSize">
           <size>
-           <width>180</width>
+           <width>185</width>
            <height>16777215</height>
           </size>
          </property>
@@ -221,7 +221,7 @@
         <widget class="QPushButton" name="StartGame">
          <property name="maximumSize">
           <size>
-           <width>180</width>
+           <width>185</width>
            <height>16777215</height>
           </size>
          </property>
@@ -234,7 +234,7 @@
         <widget class="QPushButton" name="Play">
          <property name="maximumSize">
           <size>
-           <width>180</width>
+           <width>185</width>
            <height>16777215</height>
           </size>
          </property>
