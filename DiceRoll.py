@@ -6,9 +6,6 @@ Created on Wed Aug 12 17:22:48 2020
 """
 import random
 
-class RollError(Exception):
-    pass
-
 class DiceRoll:
     
     def __init__(self):

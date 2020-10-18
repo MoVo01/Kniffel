@@ -106,6 +106,7 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.update_labels()
         self.update_buttons()
         self.ScoreComparison.setRowCount(0)
+        self.DiceWidget.set_Roll(None)
         
     def create_score_list(self):
         self.ScoreComparison.setRowCount(len(self.game.players))

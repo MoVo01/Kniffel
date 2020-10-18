@@ -13,7 +13,7 @@ import copy
 import DiceRoll as f_dr
 import Categories as f_ca
 import Game as f_ga
-import Player
+import Player as f_pl
 
 class DiceRollTest(unittest.TestCase):
     
@@ -100,274 +100,245 @@ class DiceRollTest(unittest.TestCase):
                 
 class CategoriesTest(unittest.TestCase):
     
-    
-    # def __init__(self):
-    #     ca1 = f_ca.Categories([5,4,3,2,1])
-    #     ca2 = f_ca.Categories([1,2,1,1,2])
-    #     ca3 = f_ca.Categories([2,3,1,5,6])
-    #     ca4 = f_ca.Categories([3,4,3,5,4])
-    #     ca5 = f_ca.Categories([6,6,6,6,6])
-    #     ca6 = f_ca.Categories([1,2,3,4,6])
+        
+    ca1 = f_ca.Categories([5,4,3,2,1])
+    ca2 = f_ca.Categories([1,2,1,1,2])
+    ca3 = f_ca.Categories([2,3,1,5,6])
+    ca4 = f_ca.Categories([3,4,3,5,4])
+    ca5 = f_ca.Categories([6,6,6,6,6])
+    ca6 = f_ca.Categories([1,2,3,4,6])
     
     
     def test_simple(self):
-        
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca5 = f_ca.Categories([6,6,6,6,6])
     
-        self.assertEqual(ca1.simple(6), 0)
-        self.assertEqual(ca1.simple(5), 5)
-        self.assertEqual(ca2.simple(1), 3)
-        self.assertEqual(ca2.simple(2), 4)
-        self.assertEqual(ca5.simple(6), 30)
+        self.assertEqual(self.ca1.simple(6), 0)
+        self.assertEqual(self.ca1.simple(5), 5)
+        self.assertEqual(self.ca2.simple(1), 3)
+        self.assertEqual(self.ca2.simple(2), 4)
+        self.assertEqual(self.ca5.simple(6), 30)
         
     
     def test_threeOfKind(self):
         
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca3 = f_ca.Categories([2,3,1,5,6])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        ca5 = f_ca.Categories([6,6,6,6,6])
-        ca6 = f_ca.Categories([1,2,3,4,6])
-        
-        self.assertEqual(ca1.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")
-        self.assertEqual(ca2.threeOfKind(), 7, msg = "falsche Auswertung in ThreeOfKind")
-        self.assertEqual(ca3.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")
-        self.assertEqual(ca4.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")
-        self.assertEqual(ca5.threeOfKind(), 30, msg = "falsche Auswertung in ThreeOfKind")
-        self.assertEqual(ca6.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")    
+        self.assertEqual(self.ca1.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca2.threeOfKind(), 7, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca3.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca4.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca5.threeOfKind(), 30, msg = "falsche Auswertung in ThreeOfKind")
+        self.assertEqual(self.ca6.threeOfKind(), 0, msg = "falsche Auswertung in ThreeOfKind")    
         
         
     def test_fourOfKind(self):
         
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca3 = f_ca.Categories([2,3,1,5,6])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        ca5 = f_ca.Categories([6,6,6,6,6])
-        ca6 = f_ca.Categories([1,2,3,4,6])
-        
-        self.assertEqual(ca1.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
-        self.assertEqual(ca2.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
-        self.assertEqual(ca3.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
-        self.assertEqual(ca4.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
-        self.assertEqual(ca5.fourOfKind(), 30, msg = "falsche Auswertung in FourfKind")
-        self.assertEqual(ca6.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")    
+        self.assertEqual(self.ca1.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca2.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca3.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca4.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")
+        self.assertEqual(self.ca5.fourOfKind(), 30, msg = "falsche Auswertung in FourfKind")
+        self.assertEqual(self.ca6.fourOfKind(), 0, msg = "falsche Auswertung in FourOfKind")    
     
         
     def test_kniffel(self):
         
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca3 = f_ca.Categories([2,3,1,5,6])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        ca5 = f_ca.Categories([6,6,6,6,6])
-        ca6 = f_ca.Categories([1,2,3,4,6])
-        
-        self.assertEqual(ca1.kniffel(), 0, msg = "falsche Auswertung in kniffel")
-        self.assertEqual(ca2.kniffel(), 0, msg = "falsche Auswertung in kniffel")
-        self.assertEqual(ca3.kniffel(), 0, msg = "falsche Auswertung in kniffel")
-        self.assertEqual(ca4.kniffel(), 0, msg = "falsche Auswertung in kniffel")
-        self.assertEqual(ca5.kniffel(), 50, msg = "falsche Auswertung in kniffel")
-        self.assertEqual(ca6.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca1.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca2.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca3.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca4.kniffel(), 0, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca5.kniffel(), 50, msg = "falsche Auswertung in kniffel")
+        self.assertEqual(self.ca6.kniffel(), 0, msg = "falsche Auswertung in kniffel")
         
         
     def test_twoXtwoOfKind(self):
         
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca3 = f_ca.Categories([2,3,1,5,6])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        ca5 = f_ca.Categories([6,6,6,6,6])
-        ca6 = f_ca.Categories([1,2,3,4,6])
-        
-        self.assertEqual(ca1.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
-        self.assertEqual(ca2.twoXtwoOfKind(), 7, msg = "falsche Auswertung in twoXtwoOfKind")
-        self.assertEqual(ca3.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
-        self.assertEqual(ca4.twoXtwoOfKind(), 19, msg = "falsche Auswertung in twoXtwoOfKind")
-        self.assertEqual(ca5.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
-        self.assertEqual(ca6.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca1.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca2.twoXtwoOfKind(), 7, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca3.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca4.twoXtwoOfKind(), 19, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca5.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
+        self.assertEqual(self.ca6.twoXtwoOfKind(), 0, msg = "falsche Auswertung in twoXtwoOfKind")
         
         
     def test_fullHouse(self):
         
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca3 = f_ca.Categories([2,3,1,5,6])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        ca5 = f_ca.Categories([6,6,6,6,6])
-        ca6 = f_ca.Categories([1,2,3,4,6])
-        
-        self.assertEqual(ca1.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
-        self.assertEqual(ca2.fullHouse(), 25, msg = "falsche Auswertung in FullHouse")
-        self.assertEqual(ca3.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
-        self.assertEqual(ca4.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
-        self.assertEqual(ca5.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
-        self.assertEqual(ca6.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca1.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca2.fullHouse(), 25, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca3.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca4.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca5.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
+        self.assertEqual(self.ca6.fullHouse(), 0, msg = "falsche Auswertung in FullHouse")
         
         
     def test_largeStraight(self):
         
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca3 = f_ca.Categories([2,3,1,5,6])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        ca5 = f_ca.Categories([6,6,6,6,6])
-        ca6 = f_ca.Categories([1,2,3,4,6])
-        
-        self.assertEqual(ca1.largeStraight(), 40, msg = "falsche Auswertung in LargeStraight")
-        self.assertEqual(ca2.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
-        self.assertEqual(ca3.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
-        self.assertEqual(ca4.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
-        self.assertEqual(ca5.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
-        self.assertEqual(ca6.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca1.largeStraight(), 40, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca2.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca3.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca4.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca5.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
+        self.assertEqual(self.ca6.largeStraight(), 0, msg = "falsche Auswertung in LargeStraight")
         
         
     def test_smallStraight(self):
         
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca3 = f_ca.Categories([2,3,1,5,6])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        ca5 = f_ca.Categories([6,6,6,6,6])
-        ca6 = f_ca.Categories([1,2,3,4,6])
-        
-        self.assertEqual(ca1.smallStraight(), 30, msg = "falsche Auswertung in SmallStraight")
-        self.assertEqual(ca2.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
-        self.assertEqual(ca3.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
-        self.assertEqual(ca4.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
-        self.assertEqual(ca5.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
-        self.assertEqual(ca6.smallStraight(), 30, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca1.smallStraight(), 30, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca2.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca3.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca4.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca5.smallStraight(), 0, msg = "falsche Auswertung in SmallStraight")
+        self.assertEqual(self.ca6.smallStraight(), 30, msg = "falsche Auswertung in SmallStraight")
         
         
     def test_chance(self):
         
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca3 = f_ca.Categories([2,3,1,5,6])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        ca5 = f_ca.Categories([6,6,6,6,6])
-        ca6 = f_ca.Categories([1,2,3,4,6])
-        
-        self.assertEqual(ca1.chance(), 15, msg = "falsche Auswertung in Chance")
-        self.assertEqual(ca2.chance(), 7, msg = "falsche Auswertung in Chance")
-        self.assertEqual(ca3.chance(),17, msg = "falsche Auswertung in Chance")
-        self.assertEqual(ca4.chance(),19, msg = "falsche Auswertung in Chance")
-        self.assertEqual(ca5.chance(), 30, msg = "falsche Auswertung in Chance")
-        self.assertEqual(ca6.chance(), 16, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca1.chance(), 15, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca2.chance(), 7, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca3.chance(),17, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca4.chance(),19, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca5.chance(), 30, msg = "falsche Auswertung in Chance")
+        self.assertEqual(self.ca6.chance(), 16, msg = "falsche Auswertung in Chance")
         
     def test_keydict(self):
-        
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca3 = f_ca.Categories([2,3,1,5,6])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        ca5 = f_ca.Categories([6,6,6,6,6])
-        ca6 = f_ca.Categories([1,2,3,4,6])
         
         comp = {}
         comp["5er"] = 5
         comp["largeStraight"] = 40
         comp["chance"] = 15
-        self.assertEqual(ca1.keydict(["5er", "largeStraight", "chance"]), comp, msg = "Fehler in keydict")
+        self.assertEqual(self.ca1.keydict(["5er", "largeStraight", "chance"]), comp, msg = "Fehler in keydict")
     
     def test_points_from_key(self):
         
-        ca1 = f_ca.Categories([5,4,3,2,1])
-        ca2 = f_ca.Categories([1,2,1,1,2])
-        ca4 = f_ca.Categories([3,4,3,5,4])
-        
-        self.assertEqual(ca1.points_from_key("chance"), 15, msg = "Fehler in points_from_key")
-        self.assertEqual(ca2.points_from_key("fullHouse"), 25, msg = "Fehler in points_from_key")
-        self.assertEqual(ca4.points_from_key("2x2ofKind"), 19, msg = "Fehler in points_from_key")
+        self.assertEqual(self.ca1.points_from_key("chance"), 15, msg = "Fehler in points_from_key")
+        self.assertEqual(self.ca2.points_from_key("fullHouse"), 25, msg = "Fehler in points_from_key")
+        self.assertEqual(self.ca4.points_from_key("2x2ofKind"), 19, msg = "Fehler in points_from_key")
         
         
                
 class GameTest(unittest.TestCase):
         
-    Anna = Player.Player("Anna")
-    Betty = Player.Player("Betty")
-    Claus = Player.Player("Claus")
-    Doris = Player.Player("Doris")
+    Anna = f_pl.Player("Anna")
+    Betty = f_pl.Player("Betty")
+    Claus = f_pl.Player("Claus")
+    Doris = f_pl.Player("Doris")
+    game = f_ga.Game()
     
         
     def test_check_in(self):
-        game = f_ga.Game()
-        game.players = ["Anna", "Betty", "Claus"]
-        game.check_in("Doris")
-        self.assertEqual(len(game.players), 4, msg = "Spieler wurde nicht hinzugefügt")
-        game.check_in("Doris")
-        self.assertEqual(len(game.players), 4, msg = "selber Name wurde doppelt eingefügt")
+        self.game.players = [self.Anna, self.Betty, self.Claus]
+        self.game.check_in("Doris")
+        self.assertEqual(len(self.game.players), 4, msg = "Spieler wurde nicht hinzugefügt")
+        self.game.check_in("Doris")
+        self.assertEqual(len(self.game.players), 4, msg = "selber Name wurde doppelt eingefügt")
         
         
     def test_check_out(self):
-        game = f_ga.Game()
-        game.players = ["Anna", "Betty", "Claus", "Doris"]
-        game.check_out("Carl")
-        self.assertEqual(game.players, ["Anna", "Betty", "Claus", "Doris"], msg = "nicht vorhandener Spieler bei check_out")
-        game.check_out("Betty")
-        self.assertEqual(game.players, ["Anna", "Claus", "Doris"], msg = "Fehler bei korrektem Spieler check_out")
+        self.game.players = [self.Anna, self.Betty, self.Claus, self.Doris]
+        self.game.check_out("Carl")
+        self.assertEqual(self.game.players, [self.Anna, self.Betty, self.Claus, self.Doris], msg = "nicht vorhandener Spieler bei check_out")
+        self.game.check_out("Betty")
+        self.assertEqual(self.game.players, [self.Anna, self.Claus, self.Doris], msg = "Fehler bei korrektem Spieler check_out")
         
         
     def test_next_round(self):
-        game = f_ga.Game()
         
-        game.players = ["Anna", "Claus", "Doris"]
-        game.played_this_round = ["Anna", "Claus", "Doris"]
-        game.round = 13
-        game.next_round()
-        self.assertEqual(game.round, 14, msg = "Runde wurde nicht hochgesetzt")
-        self.assertEqual(game.played_this_round, [], msg = "in neuer Runde existieren Spieler, die bereits spielten")
+        self.game.players = [self.Anna, self.Claus, self.Doris]
+        self.game.played_this_round = [self.Anna, self.Claus, self.Doris]
+        self.game.round = 13
+        self.game.next_round()
+        self.assertEqual(self.game.round, 14, msg = "Runde wurde nicht hochgesetzt")
+        self.assertEqual(self.game.played_this_round, [], msg = "in neuer Runde existieren Spieler, die bereits spielten")
         
-        game.played_this_round = ["Anna","Claus"]
-        game.round = 13
-        game.next_round()
-        self.assertEqual(game.round, 13, msg = "Runde wurde falsch hochgesetzt")
-        self.assertEqual(game.played_this_round, ["Anna","Claus"], msg = "Trotz selber Runde Spieler aus bereits gespielt gelöscht")
+        self.game.played_this_round = [self.Anna, self.Claus]
+        self.game.round = 13
+        self.game.next_round()
+        self.assertEqual(self.game.round, 13, msg = "Runde wurde falsch hochgesetzt")
+        self.assertEqual(self.game.played_this_round, [self.Anna, self.Claus], msg = "Trotz selber Runde Spieler aus bereits gespielt gelöscht")
         
-        game.played_this_round = ["Anna","Claus","Doris"]
-        game.round = 15
-        game.next_round()
-        self.assertEqual(game.round, 15, msg = "Runde wurde trotzt Spielende hochgesetzt")
-        self.assertEqual(game.played_this_round, ["Anna","Claus","Doris"], msg = "trotz Spielende dürfen Spieler nochmal spielen")
+        self.game.played_this_round = [self.Anna,self.Claus, self.Doris]
+        self.game.round = 15
+        self.game.next_round()
+        self.assertEqual(self.game.round, 15, msg = "Runde wurde trotzt Spielende hochgesetzt")
+        self.assertEqual(self.game.played_this_round, [self.Anna,self.Claus, self.Doris], msg = "trotz Spielende dürfen Spieler nochmal spielen")
         
         
     def test_play_round(self):
-        game = f_ga.Game()
+        self.game.players = [self.Anna, self.Claus, self.Doris]
         
-        game.round = 13
-        game.next_round()
-        self.play_round("Anna")
-        self.assertEqual(game.currently_playing, True, msg = "Spiel har Runde nicht gestartet")
+        self.game.round = 13
+        self.game.next_round()
+        self.game.play_round("Anna")
+        self.assertEqual(self.game.currently_playing, True, msg = "Spiel har Runde nicht gestartet")
         
     
     def test_choose_cat(self):
-        game = f_ga.Game()
         
-        game.players = ["Anna", "Claus", "Doris"]
-        game.played_this_round = []
-        game.play_round("Anna")
-        game.chooseCat("chance")
-        player = game.players[game.current_player_ind]
+        self.game.players = [self.Anna, self.Claus, self.Doris]
+        self.game.played_this_round = []
+        self.game.play_round("Anna")
+        self.game.chooseCat("chance")
+        player = self.game.players[self.game.current_player_ind]
         self.assertEqual(player.chosen_cat["chance"], True, msg = "Kategorie wurde nicht als gewählt gesetzt")
-        self.assertNotEquals(player.points["chance"], 0, msg = "Punkte wurden nicht eingetragen")
-        self.assertEqual(game.currently_playing, False, msg = "Runde des Spieler wurde nicht beednet")
-        self.assertEqual(game.played_this_round, ["Anna"], msg = "Spieler wurde nicht der Liste bereits gespielt hinzugefügt")
+        self.assertNotEqual(player.points["chance"], 0, msg = "Punkte wurden nicht eingetragen")
+        self.assertEqual(self.game.currently_playing, False, msg = "Runde des Spieler wurde nicht beednet")
+        self.assertEqual(self.game.played_this_round, [self.Anna], msg = "Spieler wurde nicht der Liste bereits gespielt hinzugefügt")
         
-        game.round = 12
-        game.played_this_round = ["Anna", "Doris"]
-        game.play_round("Claus")
-        game.chooseCat("chance")
-        self.assertEqual(game.round, 13, msg = "obwohl alle Spieler dran waren wurde die nächste Runde nicht begonnen")
+        self.game.round = 12
+        self.game.played_this_round = [self.Anna, self.Doris]
+        self.game.play_round("Claus")
+        self.game.chooseCat("chance")
+        self.assertEqual(self.game.round, 13, msg = "obwohl alle Spieler dran waren wurde die nächste Runde nicht begonnen")
         
        
     def test_players_left(self):
-        game = f_ga.Game()
-        game.players = ["Anna", "Claus", "Doris"]
-        game.played_this_round = ["Anna"]
-        self.assertEqual(game.players_left(), ["Claus","Doris"], msg = "Fehler in Liste verbleibender Spieler")        
+        self.game.players = [self.Anna, self.Claus, self.Doris]
+        self.game.played_this_round = [self.Anna]
+        self.assertEqual(self.game.players_left(), [self.Claus, self.Doris], msg = "Fehler in Liste verbleibender Spieler")     
+        
+        
+class PlayerTest(unittest.TestCase):
+    
+    pl = f_pl.Player()
+    
+    def test_check35p(self):
+        self.pl.points["6er"] = 30
+        self.pl.points["5er"] = 20
+        self.pl.points["4er"] = 12
+        self.pl.check35p()
+        self.assertEqual(self.pl.got_35p, False, msg = "Fehler in check35p")
+        self.pl.points["1er"] = 1
+        self.pl.check35p()
+        self.assertEqual(self.pl.got_35p, True, msg = "Fehler in check35p")
+        self.pl.points["2er"] = 10
+        self.pl.check35p()
+        self.assertEqual(self.pl.got_35p, True, msg = "Fehler in check35p")
+        
+        
+    def test_score(self):
+        self.pl.points["6er"] = 30
+        self.pl.points["5er"] = 20
+        self.pl.points["4er"] = 12
+        self.pl.points["1er"] = 1
+        self.pl.points["2er"] = 10
+        self.pl.check35p()
+        
+        self.assertEqual(self.pl.score(), 108, msg = "Fehler in score")
+        
+        self.pl.points["kniffel"] = 50
+        self.pl.points["chance"] = 42
+        
+        self.assertEqual(self.pl.score(), 200, msg = "Fehler in score")
+        
+        
+    def test_unused_cat(self):
+        self.pl.chosen_cat["1er"] = True
+        self.assertEqual(self.pl.unused_cat(), ["2er", "3er", "4er", "5er", "6er", "fullHouse", 
+                     "smallStraight", "largeStraight", "2ofKind", "2x2ofKind", 
+                     "3ofKind", "4ofKind", "chance", "kniffel"], msg = "Fehler in unused cat")
+        self.pl.chosen_cat["kniffel"] = True
+        self.assertEqual(self.pl.unused_cat(), ["2er", "3er", "4er", "5er", "6er", "fullHouse", 
+                     "smallStraight", "largeStraight", "2ofKind", "2x2ofKind", 
+                     "3ofKind", "4ofKind", "chance"], msg = "Fehler in unused cat")
+
+
 
 
 if __name__ == "__main__":
@@ -383,6 +354,9 @@ if __name__ == "__main__":
     
     suite3 = unittest.defaultTestLoader.loadTestsFromTestCase(GameTest)
     res3 = unittest.TextTestRunner(resultclass = unittest.TextTestResult).run(suite3)
+    
+    suite4 = unittest.defaultTestLoader.loadTestsFromTestCase(PlayerTest)
+    res4 = unittest.TextTestRunner(resultclass = unittest.TextTestResult).run(suite4)
     
     
     
