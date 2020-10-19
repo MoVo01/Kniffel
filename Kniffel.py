@@ -126,9 +126,9 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         i = 0  
         self.game.players.sort(key = lambda x: x.score(), reverse = True)
         for player in self.game.players:
+            self.ScoreComparison.setItem(i, 0, QtWidgets.QTableWidgetItem(player.name))
             self.ScoreComparison.setItem(i, 1, QtWidgets.QTableWidgetItem(str(player.score())))
             i += 1
-        #self.ScoreComparison.sortItems(1, 1)
         self.Turn.setText("Turn: {}".format(self.game.round))
               
         
