@@ -110,8 +110,6 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
         self.CreateNewPlayer.setEnabled(True)
         self.RemovePlayer.setEnabled(True)
         self.NameIn.setEnabled(True)
-        self.StartGame.setEnabled(True)
-        self.Play.setEnabled(True)
         self.Turn.setText("")
         self.updatePlayerlist()
         self.update_labels()
