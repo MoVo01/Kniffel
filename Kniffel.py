@@ -53,6 +53,11 @@ class MyDialog(WindowBaseClass, Ui_MainWindow):
                 getattr(self, "Label{}".format(key)).setText(str(player.points[key]))
             self.LabelTotalScore.setText(str(player.score()))
             self.LabelBonus.setText(str(player.got_35p * 35))
+        else:
+            for key in Player.Player.keys:
+                getattr(self, "Label{}".format(key)).setText("0") 
+            self.LabelTotalScore.setText("0")
+            self.LabelBonus.setText("0")
         
     def update_buttons(self):
         if self.Playerlist.currentItem():
